@@ -1,0 +1,56 @@
+.dropdown-menu-right {
+  right: 0 !important;
+  left: auto !important;
+}
+
+.login {
+  height: 100vh;
+  width: 100vw;
+}
+
+.loginBg {
+  background-color: black;
+}
+
+.loginForm p {
+  color: #D1972C;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  background-color: #f7f7f7;
+  margin-top: 40px;
+}
+
+::placeholder {
+  color: #D1972C;
+  font-weight: bold;
+}
+
+.defaultButton a,
+.defaultButton button{
+  background-color: #D1972C;
+  border: 1px solid #6D6D6D;
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 12px 120px;
+  line-height: initial;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 95%;
+}
+
+.defaultButton button[disabled] {
+  background-color: #ccc;
+}
+
+.loginForm .form-message.form-warning {
+  color: #d50f22;
+}
