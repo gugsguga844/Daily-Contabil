@@ -1,1 +1,67 @@
-<h1><?= $title ?></h1>
+<div class="container-fluid">
+    <div class="row vh-100">
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <div class="card text-center justify-content-center border-0" style="width: 60%; height: 50%">
+                <div class="ratio ratio-16x9">
+                    <iframe width="100%" height="300vh" src="https://www.youtube.com/embed/NAMvdbS4lk4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title" style="color: black;">Como cadastrar uma empresa</h5>
+                </div>
+            </div>
+            <div class="input-group justify-content-center" style="padding-top: 15vh;">
+                <div class="form-outline">
+                    <input type="search" id="form1" class="form-control" style="width: 50vh; height: 5vh" placeholder="O que deseja aprender?"/>
+                    <label class="form-label" for="form1">Search</label>
+                </div>
+                <button type="button" class="btn" style="height: 5vh; background-color: #D1972C">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+                </button>
+            </div>
+            <a href="#"><span style="color: black; text-decoration: underline;">Acessar Tutoriais</span></a>
+        </div>
+        <div class="col-md-6 d-flex align-items-center justify-content-center" style="height: calc(100vh - 3vh)">
+            <div class="text-bold card mb-4" style="border-radius: 20px; overflow: hidden; width: 45vw; height: 90vh">
+                <div class="card-header text-white font-weight-bold d-flex justify-content-between align-items-center" style="background-color: #D1972C;">
+                    <h5 class="mb-0">Agenda Fiscal - Outubro/2024</h5>
+                    <i class="fa-solid fa-plus fa-2xl" style="color: #ffffff;"></i>
+                </div>
+                <div class="card-body text-dark" style="overflow-y: auto;">
+                    <ul class="list-group list-group-flush font-weight-bold">
+                        <li class="list-group-item" style="border-bottom: 2px solid #ccc;">
+                            <span class="btn btn-primary bg-white border-0 text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
+                                    10/10/2024 - EFD-Contribuições
+                            </span>
+                            <ul class="collapse mt-2 ms-3" id="collapseExample1">
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item" style="border-bottom: 2px solid #ccc;">
+                            <span class="btn btn-primary bg-white border-0 text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
+                                    15/10/2024 - DCTFWeb
+                            </span>
+                            <ul class="collapse mt-2 ms-3" id="collapseExample2">
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                            </ul>
+                        </li>
+                        <li class="list-group-item border-bottom" style="border-bottom: 2px solid #ccc;">
+                            <span class="btn btn-primary bg-white border-0 text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                                <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
+                                    20/10/2024 - Obrigação 3
+                            </span>
+                            <ul class="collapse mt-2 ms-3" id="collapseExample3">
+                                <li>Empresa 1</li>
+                                <li>Empresa 2</li>
+                            </ul>
+                        </li>
+                        <!-- Continue adicionando obrigações -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
