@@ -13,4 +13,6 @@ Route::post('/login', [AuthenticationsController::class, 'authenticate'])->name(
 // Logout
 Route::get('/logout', [AuthenticationsController::class, 'destroy'])->name('users.logout');
 
+Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
 

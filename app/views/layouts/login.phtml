@@ -9,7 +9,10 @@
   <link rel="stylesheet" href="/assets/css/login.css">
   </head>
   <body>
-    <?php require $view ?>
+    <div class="login-card">
+      <?php require '_flash_message.phtml'; ?>
+      <?php require $view ?>
+    </div>
 
 
   <!-- Script do Bootstrap -->

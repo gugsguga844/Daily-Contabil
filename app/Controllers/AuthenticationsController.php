@@ -14,7 +14,7 @@ class AuthenticationsController extends Controller
 
     public function new(): void
     {
-        $this->render('authentications/login');
+        $this->render('authentications/new');
     }
 
     public function authenticate(Request $request): void
@@ -24,6 +24,7 @@ class AuthenticationsController extends Controller
 
         if ($user && $user->authenticate($params['password'])) {
             Auth::login($user);
+            $_SESSION['role'] = $user->role;
 
             FlashMessage::success('Login realizado com sucesso!');
             $this->redirectTo(route('home.index'));
@@ -36,6 +37,8 @@ class AuthenticationsController extends Controller
     public function destroy(): void
     {
         Auth::logout();
+        unset($_SESSION['role']);
+        
         FlashMessage::success('Logout realizado com sucesso!');
         $this->redirectTo(route('users.login'));
     }
