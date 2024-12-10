@@ -24,15 +24,15 @@ class User extends Model
     protected ?string $password = null;
     protected ?string $password_confirmation = null;
 
-    public function problems(): HasMany
-    {
-        return $this->hasMany(Problem::class, 'user_id');
-    }
+    // public function users(): HasMany
+    // {
+    //     return $this->hasMany(User::class, 'user_id');
+    // }
 
-    public function reinforcedProblems(): BelongsToMany
-    {
-        return $this->belongsToMany(Problem::class, 'problem_user_reinforce', 'user_id', 'problem_id');
-    }
+    // public function reinforcedProblems(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(User::class, 'problem_user_reinforce', 'user_id', 'problem_id');
+    // }
 
     public function validates(): void
     {
@@ -73,8 +73,8 @@ class User extends Model
         }
     }
 
-    public function avatar(): ProfileAvatar
-    {
-        return new ProfileAvatar($this);
-    }
+        // public function avatar(): ProfileAvatar
+        // {
+        //     return new ProfileAvatar($this);
+        // }
 }
