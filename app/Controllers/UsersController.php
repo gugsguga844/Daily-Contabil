@@ -50,17 +50,17 @@ class UsersController extends Controller
     {
         $params = $request->getParams();
         $user = new User($params['user']);
-        $user->validates();
 
-        if ($user->hasErrors()) {
-            FlashMessage::danger('Existem dados incorretos! Por favor, verifique!');
+        
+        if ($user->validates()) {
+            FlashMessage::danger('Existem dados incorretos! Por favor, verificar!');
             $title = 'Novo Usuário';
             $this->render('users/new', compact('user', 'title'));
             return;
         }
 
         if ($user->save()) {
-            FlashMessage::success('Problema registrado com sucesso!');
+            FlashMessage::success('Usuário registrado com sucesso!');
             $this->redirectTo(route('users.index'));
         } else {
             FlashMessage::danger('Existem dados incorretos! Por verifique!');
