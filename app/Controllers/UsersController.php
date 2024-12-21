@@ -17,9 +17,9 @@ class UsersController extends Controller
         $title = 'Usuários Cadastrados';
 
         if ($request->acceptJson()) {
-            $this->renderJson('users/index', compact('users', 'title'));
+            $this->renderJson('users/index', compact('paginator', 'users', 'title'));
         } else {
-            $this->render('users/index', compact('users', 'title'));
+            $this->render('users/index', compact('paginator', 'users', 'title'));
         }
     }
 
@@ -73,41 +73,45 @@ class UsersController extends Controller
         exit;
     }
 
-//     public function edit(Request $request): void
-//     {
-//         $params = $request->getParams();
-//         $problem = $this->current_user->users()->findById($params['id']);
+    public function edit(Request $request): void
+    {
+        $params = $request->getParams();
+        $user = User::findById($params['id']);
 
-//         $title = "Editar Problema #{$problem->id}";
-//         $this->render('problems/edit', compact('problem', 'title'));
-//     }
+        $title = "Editar Problema #{$user->id}";
+        $this->render('users/edit', compact('user', 'title'));
+    }
 
-//     public function update(Request $request): void
-//     {
-//         $id = $request->getParam('id');
-//         $params = $request->getParam('problem');
+    public function update(Request $request): void
+    {
+        $id = $request->getParam('id');
+        $params = $request->getParam('user');
 
-//         $problem = $this->current_user->users()->findById($id);
-//         $problem->title = $params['title'];
+        $user = User::findById($id);
 
-//         if ($problem->save()) {
-//             FlashMessage::success('Problema atualizado com sucesso!');
-//             $this->redirectTo(route('problems.index'));
-//         } else {
-//             FlashMessage::danger('Existem dados incorretos! Por verifique!');
-//             $title = "Editar Problema #{$problem->id}";
-//             $this->render('problems/edit', compact('problem', 'title'));
-//         }
-//     }
+        $user->name = $params['name'] ?? $user->name;
+        $user->email = $params['email'] ?? $user->email;
+        $user->role = $params['role'] ?? $user->role;
+        $user->password = $params['password'] ?? $user->password;
 
-//     public function destroy(Request $request): void
-//     {
-//         $params = $request->getParams();
+        if ($user->save()) {
+            FlashMessage::success('Usuário atualizado com sucesso!');
+            $this->redirectTo(route('users.index'));
+        } else {
+            FlashMessage::danger('Existem dados incorretos! Por verifique!');
+            $title = "Editar Usuário #{$user->id}";
+            $this->render('user/edit', compact('user', 'title'));
+        }
+    }
 
-//         $problem = $this->current_user->users()->findById($params['id']);
-//         $problem->destroy();
+    public function destroy(Request $request): void
+    {
+        $params = $request->getParams();
 
-//         FlashMessage::success('Problema removido com sucesso!');
-//         $this->redirectTo(route('problems.index'));
-//     }
+        $user = User::findById($params['id']);
+        $user->destroy();
+
+        FlashMessage::success('Usuário removido com sucesso!');
+        $this->redirectTo(route('users.index'));
+    }
 }

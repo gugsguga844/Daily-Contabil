@@ -1,4 +1,4 @@
-document.querySelectorAll('.btn[data-toggle="collapse"]').forEach(button => {
+document.querySelectorAll('.btn[data-bs-toggle="collapse"]').forEach(button => {
   button.addEventListener('click', function() {
       const icon = this.querySelector('.toggle-icon');
       

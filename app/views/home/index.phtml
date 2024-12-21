@@ -6,12 +6,12 @@
                     <iframe width="100%" height="300vh" src="https://www.youtube.com/embed/NAMvdbS4lk4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title" style="color: black;">Como cadastrar uma empresa</h5>
+                    <h5 class="card-title text-black">Como cadastrar uma empresa</h5>
                 </div>
             </div>
             
             <div class="d-flex justify-content-center align-items-center" style="width: 60%">
-                <input type="search" id="form1" class="form-control" placeholder="O que deseja aprender?" style="margin: 0"/>
+                <input type="search" id="form1" class="form-control m-0" placeholder="O que deseja aprender?"/>
                 <button type="button" class="btn" style="height: 5vh; background-color: #D1972C">
                 <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
                 </button>
@@ -21,16 +21,16 @@
         </div>
         <div class="col-md-6 d-flex align-items-center justify-content-center" style="height: calc(100vh - 3vh)">
             <div class="text-bold card mb-4" style="border-radius: 20px; overflow: hidden; width: 45vw; height: 90vh">
-                <div class="card-header text-white font-weight-bold d-flex justify-content-between align-items-center" style="background-color: #D1972C;">
+                <div class="card-header text-white fw-bold d-flex justify-content-between align-items-center" style="background-color: #D1972C;">
                     <h5 class="mb-0">Agenda Fiscal - Outubro/2024</h5>
                     <?php if ($_SESSION['role'] === 'admin'): ?>
                         <i class="fa-solid fa-plus fa-2xl" style="color: #ffffff;"></i>
                     <?php endif; ?>
                 </div>
                 <div class="card-body text-dark" style="overflow-y: auto;">
-                    <ul class="list-group list-group-flush font-weight-bold">
+                    <ul class="list-group list-group-flush fw-bold">
                         <li class="list-group-item" style="border-bottom: 2px solid #ccc;">
-                            <span class="btn btn-primary bg-white border-0 text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                            <span class="btn btn-primary bg-white border-0 text-dark fw-bold" data-bs-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
                                 <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
                                     10/10/2024 - EFD-Contribuições
                             </span>
@@ -40,7 +40,7 @@
                             </ul>
                         </li>
                         <li class="list-group-item" style="border-bottom: 2px solid #ccc;">
-                            <span class="btn btn-primary bg-white border-0 text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                            <span class="btn btn-primary bg-white border-0 text-dark fw-bold" data-bs-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
                                 <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
                                     15/10/2024 - DCTFWeb
                             </span>
@@ -50,7 +50,7 @@
                             </ul>
                         </li>
                         <li class="list-group-item border-bottom" style="border-bottom: 2px solid #ccc;">
-                            <span class="btn btn-primary bg-white border-0 text-dark font-weight-bold" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                            <span class="btn btn-primary bg-white border-0 text-dark fw-bold" data-bs-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
                                 <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
                                     20/10/2024 - Obrigação 3
                             </span>

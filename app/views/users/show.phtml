@@ -1,5 +1,78 @@
-<div class="card">
-    <div class="card-body">
-        <?= $user->title ?>
+<div class="container-fluid py-4">
+    <div class="companycontent mt-4">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover table-bordered text-center align-middle">
+                    <thead>
+                    <tr class="shaded">
+                        <th class="col-3">ID</th>
+                        <th class="col-3">Nome</th>
+                        <th class="col-3 d-none d-md-table-cell">E-mail</th>
+                        <th class="col-3 d-none d-md-table-cell">Papel</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $user->id ?></td>
+                            <td><?= $user->name ?></td>
+                            <td class="d-none d-md-table-cell"><?= $user->email ?></a></td>
+                            <td class="d-none d-md-table-cell"><?= $user->role ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-4">
+            <div class="defaultButton">               
+                <button class="btn btn-danger" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Excluir </button>
+            </div>
+            <form action="<?= route('users.destroy', ['id' => $user->id]) ?>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header text-white">
+                                <h5 class="modal-title" id="staticBackdropLabel">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>Excluir Usuário
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <!-- Modal Body -->
+                            <div class="modal-body text-center">
+                                <p class="fs-5 text-dark mb-0">Tem certeza de que deseja excluir este usuário?</p>
+                                <p class="text-muted">Esta ação não poderá ser desfeita.</p>
+                            </div>
+                            <!-- Modal Footer -->
+                            <div class="modal-footer justify-content-center">
+                                <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger px-4">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-4">
+            <div class="defaultButton">
+                <a class="btn btn-warning" href="<?= route('users.edit', ['id' => $user->id]) ?>"> Editar </a>
+            </div>
+        </div>
+        <div class="col-2">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+        </div>
+        <div class="col-4">
+            <div class="defaultButton">
+                <button class="return btn btn-success" onclick="history.back()">Retornar</button>
+            </div>
+        </div>
+        <div class="col-4">
+        </div>
 </div>

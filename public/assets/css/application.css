@@ -44,6 +44,26 @@ input {
   border-radius: 5px;
   display: inline-block;
   margin-top: 20%;
+  text-align: center;
+}
+
+.modal-content {
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  background-color: #D1972C;
+}
+
+/* Botão de fechar branco */
+.btn-close-white {
+  filter: invert(1);
+}
+
+/* Adicionar espaçamento no corpo */
+.modal-body p {
+  margin-bottom: 0.5rem;
 }
 
 .defaultButton button[disabled] {
@@ -52,4 +72,16 @@ input {
 
 .loginForm .form-message.form-warning {
   color: #d50f22;
+}
+
+.page-link {
+  color: black;
+  font-weight: bold;
+  background-color: white;
+  border-color: #D1972C;
+}
+
+.active>.page-link {
+  background-color: #D1972C;
+  color: black;
 }

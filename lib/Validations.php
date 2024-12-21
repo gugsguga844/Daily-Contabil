@@ -3,6 +3,7 @@
 namespace Lib;
 
 use Core\Database\Database;
+use PDO;
 
 class Validations
 {
@@ -34,6 +35,9 @@ class Validations
 
         $table = $object::table();
         $conditions = implode(' AND ', array_map(fn ($field) => "{$field} = :{$field}", $fields));
+        if (!$object->newRecord()) { 
+            $conditions .= " AND id != :current_id";
+        } 
 
         $sql = <<<SQL
             SELECT id FROM {$table} WHERE {$conditions};
@@ -44,6 +48,10 @@ class Validations
 
         foreach ($fields as $field) {
             $stmt->bindValue($field, $object->$field);
+        }
+
+        if (!$object->newRecord()) {
+            $stmt->bindValue('current_id', $object->id, PDO::PARAM_INT);
         }
 
         $stmt->execute();

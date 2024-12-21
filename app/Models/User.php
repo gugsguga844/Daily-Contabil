@@ -13,8 +13,6 @@ use Core\Database\ActiveRecord\Model;
  * @property string $name
  * @property string $email
  * @property string $encrypted_password
- * @property Problem[] $problems
- * @property Problem[] $reinforced_problems
  */
 class User extends Model
 {
@@ -37,6 +35,7 @@ class User extends Model
     public function validates(): void
     {
         Validations::notEmpty('name', $this);
+        Validations::notEmpty('email', $this);
         Validations::notEmpty('email', $this);
 
         Validations::uniqueness('email', $this);
