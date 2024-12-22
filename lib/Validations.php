@@ -35,9 +35,9 @@ class Validations
 
         $table = $object::table();
         $conditions = implode(' AND ', array_map(fn ($field) => "{$field} = :{$field}", $fields));
-        if (!$object->newRecord()) { 
+        if (!$object->newRecord()) {
             $conditions .= " AND id != :current_id";
-        } 
+        }
 
         $sql = <<<SQL
             SELECT id FROM {$table} WHERE {$conditions};
