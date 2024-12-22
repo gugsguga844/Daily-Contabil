@@ -17,9 +17,9 @@ class UsersController extends Controller
         $title = 'Usuários Cadastrados';
 
         if ($request->acceptJson()) {
-            $this->renderJson('users/index', compact('paginator', 'users', 'title'));
+            $this->renderJson('users/index', compact('paginator', 'users'));
         } else {
-            $this->render('users/index', compact('paginator', 'users', 'title'));
+            $this->render('users/index', compact('paginator', 'users'));
         }
     }
 
@@ -35,7 +35,7 @@ class UsersController extends Controller
         }
 
         $title = "Visualização do Problema #{$user->id}";
-        $this->render('users/show', compact('user', 'title'));
+        $this->render('users/show', compact('user'));
     }
 
     public function new(): void
@@ -43,7 +43,7 @@ class UsersController extends Controller
         $user = new User();
 
         $title = 'Novo Usuário';
-        $this->render('users/new', compact('user', 'title'));
+        $this->render('users/new', compact('user'));
     }
 
     public function create(Request $request): void
@@ -51,11 +51,10 @@ class UsersController extends Controller
         $params = $request->getParams();
         $user = new User($params['user']);
 
-        
         if ($user->validates()) {
             FlashMessage::danger('Existem dados incorretos! Por favor, verificar!');
             $title = 'Novo Usuário';
-            $this->render('users/new', compact('user', 'title'));
+            $this->render('users/new', compact('user'));
             return;
         }
 
@@ -65,7 +64,7 @@ class UsersController extends Controller
         } else {
             FlashMessage::danger('Existem dados incorretos! Por verifique!');
             $title = 'Novo Usuário';
-            $this->render('users/new', compact('user', 'title'));
+            $this->render('users/new', compact('user'));
         }
 
         echo "Chegou até aqui!";
@@ -79,7 +78,7 @@ class UsersController extends Controller
         $user = User::findById($params['id']);
 
         $title = "Editar Problema #{$user->id}";
-        $this->render('users/edit', compact('user', 'title'));
+        $this->render('users/edit', compact('user'));
     }
 
     public function update(Request $request): void
@@ -100,7 +99,7 @@ class UsersController extends Controller
         } else {
             FlashMessage::danger('Existem dados incorretos! Por verifique!');
             $title = "Editar Usuário #{$user->id}";
-            $this->render('user/edit', compact('user', 'title'));
+            $this->render('users/edit', compact('user'));
         }
     }
 
