@@ -1,15 +1,4 @@
 <div class="container-fluid">
-    <?php if (!empty($user->errors)): ?>
-        <div class="alert alert-danger">
-            <ul>
-                <?php foreach ($user->errors as $field => $messages): ?>
-                    <?php foreach ($messages as $message): ?>
-                        <li><?= htmlspecialchars($message) ?></li>
-                    <?php endforeach; ?>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-    <?php endif; ?>
     <form action="<?= route('users.create') ?>" method="POST" class="<?= $user->hasErrors() ? '' : 'was-validated' ?>" novalidate>
         <div class="form-container">
             <span class="form-message">Campos marcados com asterísco são obrigatórios. (*)</span>

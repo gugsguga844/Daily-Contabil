@@ -11,13 +11,11 @@ class AuthorizeAdmin implements Middleware
 {
     public function handle(Request $request): void
     {
-        // Verifique se o usuário está logado
         if (!Auth::check()) {
             FlashMessage::danger('Você deve estar logado para acessar essa página');
             $this->redirectTo(route('users.login'));
         }
 
-        // Verifique se o usuário é admin
         if (Auth::user()->role !== 'admin') {
             FlashMessage::danger('Você não tem permissão para acessar esta página');
             $this->redirectTo(route('home.index'));
