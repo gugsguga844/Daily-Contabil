@@ -1,0 +1,48 @@
+<div class="container-fluid py-4">
+    <div class="row form-group">
+        <div class="col-12 col-xl-4 col-lg-4">
+            <input
+            type="text"
+            class="form-control"
+            placeholder="PESQUISAR"
+            />
+        </div>
+        <div class="col-6 col-xl-4 col-lg-4 d-flex justify-content-center">
+        </div>
+        <div class="col-12 col-lg-4 col-xl-4 d-flex justify-content-end">
+            <div class="btn search">
+                <a class="d-flex align-items-center justify-content-center" href="<?= route('users.new') ?>">
+                    <i class="fa-solid fa-plus fa-xl"></i>
+                    <span class="text-center fs-3"> Novo Usuário</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="companycontent mt-4">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover table-bordered text-center align-middle">
+                    <thead>
+                    <tr class="shaded">
+                        <th class="col-3">ID</th>
+                        <th class="col-3">Nome</th>
+                        <th class="col-3 d-none d-md-table-cell">E-mail</th>
+                        <th class="col-3 d-none d-md-table-cell">Papel</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($users as $user) : ?>
+                        <tr>
+                            <td><a href="<?= route('users.show', ['id' => $user->id]) ?>">#<?= htmlspecialchars($user->id, ENT_QUOTES) ?></a></td>
+                            <td><a href="<?= route('users.show', ['id' => $user->id]) ?>"><?= htmlspecialchars($user->name, ENT_QUOTES) ?></a></td>
+                            <td class="d-none d-md-table-cell"><a href="<?= route('users.show', ['id' => $user->id]) ?>"><?= htmlspecialchars($user->email, ENT_QUOTES) ?></a></td>
+                            <td class="d-none d-md-table-cell"><a href="<?= route('users.show', ['id' => $user->id]) ?>"><?= htmlspecialchars($user->role, ENT_QUOTES) ?></a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <?php $paginator->renderPagesNavigation(); ?>
+</div>

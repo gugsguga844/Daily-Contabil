@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <form action="<?= route('users.create') ?>" method="POST" class="<?= $user->hasErrors() ? '' : 'was-validated' ?>" novalidate>
+        <div class="form-container">
+            <span class="form-message">Campos marcados com asterísco são obrigatórios. (*)</span>
+
+            <div class="row">
+                <div class="col-8">
+                    <label for="name">
+                        <p>Nome *</p>
+                        <input
+                            formControlName="name"
+                            type="text"
+                            name="user[name]"
+                            id="name"
+                            required
+                            minlength="3"
+                            value="<?= $user->name ?>"
+                            autocomplete="given-name"
+                        >
+                    </label>
+                    <div class="invalid-feedback"><?= $user->errors('name') ? $user->errors('name') : '' ?></div>
+                </div>
+
+                <div class="col-4">
+                    <label for="status">
+                        <p>Ativa? *</p>
+                        <select formControlName="status" name="user[role]" id="status" required>
+                            <option value="admin" <?= $user->role == 'admin' ? 'selected' : '' ?>>Admin</option>
+                            <option value="user" <?= $user->role == 'user' ? 'selected' : '' ?>>Usuário</option>
+                        </select>
+                    </label>
+                    <div class="invalid-feedback"><?= $user->errors('title') ? $user->errors('title') : '' ?></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label for="email">
+                        <p>Endereço de E-mail *</p>
+                        <input
+                            formControlName="email"
+                            type="email"
+                            name="user[email]"
+                            id="email"
+                            required
+                            minlength="5"
+                            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                            value="<?= $user->email ?>"
+                            autocomplete="given-name"
+                        >
+                    </label>
+                    <div class="invalid-feedback"><?= $user->errors('title') ? $user->errors('title') : '' ?></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <label for="password">
+                        <p>Senha *</p>
+                        <input
+                            formControlName="password"
+                            type="password"
+                            name="user[password]"
+                            id="password"
+                            required
+                            minlength="5"
+                            value="<?= $user->password ?>"
+                        >
+                    </label>
+                    <div class="invalid-feedback"><?= $user->errors('title') ? $user->errors('title') : '' ?></div>
+                </div>        
+                <div class="col-6">
+                    <label for="password_confirmation">
+                    <p>Confirmar Senha *</p>
+                    <input
+                        formControlName="password_confirmation"
+                        type="password"
+                        name="user[password_confirmation]"
+                        id="password_confirmation"
+                        required
+                        minlength="5"
+                    >
+                    </label>   
+                </div>   
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="clear defaultButton">
+                        <button type="reset">Limpar</button>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="submitButton defaultButton">
+                        <button type="submit" class="btn btn-primary">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

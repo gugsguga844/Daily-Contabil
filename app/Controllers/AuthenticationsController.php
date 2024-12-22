@@ -38,7 +38,7 @@ class AuthenticationsController extends Controller
     {
         Auth::logout();
         unset($_SESSION['role']);
-        
+
         FlashMessage::success('Logout realizado com sucesso!');
         $this->redirectTo(route('users.login'));
     }
