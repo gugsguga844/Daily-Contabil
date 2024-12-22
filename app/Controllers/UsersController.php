@@ -14,8 +14,6 @@ class UsersController extends Controller
         $paginator = User::paginate(page: $request->getParam('page', 1));
         $users = $paginator->registers();
 
-        $title = 'Usuários Cadastrados';
-
         if ($request->acceptJson()) {
             $this->renderJson('users/index', compact('paginator', 'users'));
         } else {
@@ -34,7 +32,6 @@ class UsersController extends Controller
             return;
         }
 
-        $title = "Visualização do Problema #{$user->id}";
         $this->render('users/show', compact('user'));
     }
 
@@ -42,7 +39,6 @@ class UsersController extends Controller
     {
         $user = new User();
 
-        $title = 'Novo Usuário';
         $this->render('users/new', compact('user'));
     }
 
@@ -53,7 +49,6 @@ class UsersController extends Controller
 
         if ($user->validates()) {
             FlashMessage::danger('Existem dados incorretos! Por favor, verificar!');
-            $title = 'Novo Usuário';
             $this->render('users/new', compact('user'));
             return;
         }
@@ -63,7 +58,6 @@ class UsersController extends Controller
             $this->redirectTo(route('users.index'));
         } else {
             FlashMessage::danger('Existem dados incorretos! Por verifique!');
-            $title = 'Novo Usuário';
             $this->render('users/new', compact('user'));
         }
 
@@ -98,7 +92,6 @@ class UsersController extends Controller
             $this->redirectTo(route('users.index'));
         } else {
             FlashMessage::danger('Existem dados incorretos! Por verifique!');
-            $title = "Editar Usuário #{$user->id}";
             $this->render('users/edit', compact('user'));
         }
     }

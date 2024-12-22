@@ -8,5 +8,3 @@ CREATE TABLE users (
     avatar_name VARCHAR(65),
     role ENUM('admin', 'user') DEFAULT 'user' NOT NULL
 );
-
-DROP TABLE IF EXISTS problems;
