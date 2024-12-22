@@ -36,9 +36,8 @@ class User extends Model
     {
         Validations::notEmpty('name', $this);
         Validations::notEmpty('email', $this);
-        Validations::notEmpty('email', $this);
-
         Validations::uniqueness('email', $this);
+        Validations::notEmpty('password', $this);
 
         if ($this->newRecord()) {
             Validations::passwordConfirmation($this);
@@ -57,6 +56,11 @@ class User extends Model
     public static function findByEmail(string $email): User | null
     {
         return User::findBy(['email' => $email]);
+    }
+
+    public static function findById(int $id): ?static
+    {
+        return User::findBy(['id' => $id]);
     }
 
     public function __set(string $property, mixed $value): void

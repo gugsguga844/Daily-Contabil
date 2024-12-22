@@ -7,7 +7,6 @@ CREATE TABLE users (
     encrypted_password VARCHAR(255) NOT NULL,
     avatar_name VARCHAR(65),
     role ENUM('admin', 'user') DEFAULT 'user' NOT NULL
-
 );
 
 DROP TABLE IF EXISTS problems;
