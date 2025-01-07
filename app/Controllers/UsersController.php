@@ -57,13 +57,9 @@ class UsersController extends Controller
             FlashMessage::success('Usuário registrado com sucesso!');
             $this->redirectTo(route('users.index'));
         } else {
-            FlashMessage::danger('Existem dados incorretos! Por verifique!');
+            FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
             $this->render('users/new', compact('user'));
         }
-
-        echo "Chegou até aqui!";
-        var_dump($user->errors);
-        exit;
     }
 
     public function edit(Request $request): void
@@ -71,7 +67,6 @@ class UsersController extends Controller
         $params = $request->getParams();
         $user = User::findById($params['id']);
 
-        $title = "Editar Problema #{$user->id}";
         $this->render('users/edit', compact('user'));
     }
 

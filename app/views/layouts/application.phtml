@@ -10,43 +10,38 @@
     <link rel="stylesheet" href="/assets/css/application.css">
     <link rel="stylesheet" href="/assets/css/list.css">
     <link rel="stylesheet" href="/assets/css/newUser.css">
+    <link rel="stylesheet" href="/assets/css/tutorials/index.css">
 </head>
 <body style="background-color: #ffffff; color: white; overflow-y: hidden">
     <header>
-        <nav class="navbar navbar-expand-lg" style="background-color: #D1972C;">
+        <nav class="navbar navbar-expand-lg" style="background-color: black;">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="me-auto nav-item" style="list-style-type: none;">
+                        <a class="nav-link active" aria-current="page" href="<?= route('home.index') ?>"> Início <span class="sr-only">(current)</span></a>
+                    </li>
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="<?= route('home.index') ?>"> Início <span class="sr-only">(current)</span></a>
+                            <a class="nav-link active" href="<?= route('tutorials.index') ?>"> Tutoriais </a>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link active" href="#"> Empresas </a>                        
+                        </li> 
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Tutoriais</a>
-                        </li>
-                        <?php if ($_SESSION['role'] === 'admin'): ?>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Empresas
-                                </a>                        
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Listar Empresas</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Cadastrar Empresas</a></li>
-                                </ul>
-                            </li>                        
-                        <?php endif; ?>
+                            <a class="nav-link active" href="#"> Agenda Tributária </a>
+                        </li>                       
                     </ul>
-                    <li class="nav-item dropdown" style="list-style-type: none;">
+                    <li class="nav-item dropdown ms-auto" style="list-style-type: none;">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                             <i class="fa-solid fa-circle-user fa-2xl" style="color: white; font-weight: bold;"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">Dados Pessoais</a>
                             <?php if ($_SESSION['role'] === 'admin'): ?>
-                            <a class="dropdown-item" href="<?= route('users.index') ?>">Cadastrar Usuários</a>
+                            <a class="dropdown-item" href="<?= route('users.index') ?>">Usuários</a>
                             <?php endif; ?>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?= route('users.logout') ?>" style="color: red">Sair</a>

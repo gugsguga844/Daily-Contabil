@@ -1,0 +1,66 @@
+.tutorials-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 60px); /* Subtrai a altura da navbar */
+    background-color: #ffffff;
+}
+
+.tutorials-index .card-container {
+    display: flex;
+    width: 90%;
+    max-width: 1400px;
+    height: 70vh;/* Subtrai a altura da navbar padrão do Bootstrap */
+}
+
+.tutorials-index .card-item {
+    flex: 1;
+    margin: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem; /* Texto maior */
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilos individuais para cada card */
+.tutorials-index .card-fiscal {
+    background-color: black;
+}
+
+.tutorials-index .card-contabil {
+    background-color: black;
+}
+
+.tutorials-index .card-diversos {
+    background-color: black;
+}
+
+/* Efeito hover */
+.tutorials-index .card-item:hover {
+    transform: scale(1.05); /* Menor aumento para manter proporção */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 20;
+}
+
+.tutorials-index .card-item h2 {
+    text-decoration: none;
+    color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tutorials-index .card-container {
+        flex-direction: column;
+        height: auto; /* Ajusta a altura para mobile */
+    }
+    .tutorials-index .card-item {
+        margin: 20px 0;
+        height: 150px;
+    }
+}
