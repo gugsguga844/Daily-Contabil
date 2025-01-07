@@ -22,16 +22,6 @@ class User extends Model
     protected ?string $password = null;
     protected ?string $password_confirmation = null;
 
-    // public function users(): HasMany
-    // {
-    //     return $this->hasMany(User::class, 'user_id');
-    // }
-
-    // public function reinforcedProblems(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(User::class, 'problem_user_reinforce', 'user_id', 'problem_id');
-    // }
-
     public function validates(): void
     {
         Validations::notEmpty('name', $this);

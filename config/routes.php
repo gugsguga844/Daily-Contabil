@@ -3,6 +3,7 @@
 use App\Controllers\HomeController;
 use Core\Router\Route;
 use App\Controllers\AuthenticationsController;
+use App\Controllers\TutorialsController;
 use App\Controllers\UsersController;
 
 // Login
@@ -10,13 +11,17 @@ Route::get('/login', [AuthenticationsController::class, 'new'])->name('users.log
 Route::post('/login', [AuthenticationsController::class, 'authenticate'])->name('users.authenticate');
 
 Route::middleware('auth')->group(function () {
-    // Index
+    // Root
     Route::get('/', [HomeController::class, 'index'])->name('root');
 
     // Logout
     Route::get('/logout', [AuthenticationsController::class, 'destroy'])->name('users.logout');
 
+    // Home
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+
+    // Tutorials
+    Route::get('/tutorials', [TutorialsController::class, 'index'])->name('tutorials.index');
 
     Route::middleware('admin')->group(function () {
     // Users' CRUD:

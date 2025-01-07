@@ -1,66 +1,174 @@
 <div class="container-fluid">
     <div class="row vh-100">
-        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
-            <div class="card text-center justify-content-center border-0" style="width: 60%; height: 50%">
-                <div class="ratio ratio-16x9">
-                    <iframe width="100%" height="300vh" src="https://www.youtube.com/embed/NAMvdbS4lk4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title text-black">Como cadastrar uma empresa</h5>
-                </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center" style="padding: 20px;">
+        <!-- Card de Vídeo -->
+        <div class="card shadow-lg" style="width: 80%; border-radius: 20px; overflow: hidden;">
+            <div class="ratio ratio-16x9">
+                <iframe 
+                    src="https://www.youtube.com/embed/NAMvdbS4lk4" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
-            
-            <div class="d-flex justify-content-center align-items-center" style="width: 60%">
-                <input type="search" id="form1" class="form-control m-0" placeholder="O que deseja aprender?"/>
-                <button type="button" class="btn" style="height: 5vh; background-color: #D1972C">
-                <i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>
+            <div class="card-body text-center">
+                <h4 class="card-title text-dark">Como cadastrar uma empresa</h4>
+                <p class="card-text text-muted">Assista ao tutorial para aprender a cadastrar uma nova empresa na agenda fiscal.</p>
+            </div>
+        </div>
+
+        <!-- Botões de Navegação -->
+        <div class="d-flex justify-content-between align-items-center mt-3" style="width: 80%;">
+            <button class="btn btn-outline-primary">
+                <i class="fa-solid fa-arrow-left"></i> Anterior
+            </button>
+            <div class="input-group d-flex justify-content-center" style="flex: 1; height: 100%">
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    placeholder="O que deseja aprender?" 
+                    aria-label="Search tutorial">
+                <button class="btn btn-primary" style="background-color: black; border-color: black;">
+                    <i class="fa-solid fa-magnifying-glass" style="color: #fff;"></i>
                 </button>
             </div>
 
-            <a href="#"><span style="color: black; text-decoration: underline;">Acessar Tutoriais</span></a>
+            <!-- Botão Próximo -->
+            <button class="btn btn-outline-primary">
+                Próximo <i class="fa-solid fa-arrow-right"></i>
+            </button>
         </div>
-        <div class="col-md-6 d-flex align-items-center justify-content-center" style="height: calc(100vh - 3vh)">
+        <a href="#" class="btn btn-link mt-3 text-decoration-underline text-dark">
+            <h2> Acessar Tutoriais <i class="fa-solid fa-video"></i> </h2>
+        </a>
+        </div>
+        
+        <div class="col-12 col-md-6 d-flex align-items-center justify-content-center" style="height: calc(100vh - 3vh)">
             <div class="text-bold card mb-4" style="border-radius: 20px; overflow: hidden; width: 45vw; height: 90vh">
-                <div class="card-header text-white fw-bold d-flex justify-content-between align-items-center" style="background-color: #D1972C;">
-                    <h5 class="mb-0">Agenda Fiscal - Outubro/2024</h5>
-                    <?php if ($_SESSION['role'] === 'admin'): ?>
+                <div class="card-header text-white fw-bold d-flex justify-content-center align-items-center" style="background-color: black; height: 10vh">
+                    <h2 class="mb-0">Agenda Tributária</h2>
+                    <!-- <?php if ($_SESSION['role'] === 'admin'): ?>
                         <i class="fa-solid fa-plus fa-2xl" style="color: #ffffff;"></i>
-                    <?php endif; ?>
+                    <?php endif; ?> -->
                 </div>
-                <div class="card-body text-dark" style="overflow-y: auto;">
-                    <ul class="list-group list-group-flush fw-bold">
-                        <li class="list-group-item" style="border-bottom: 2px solid #ccc;">
-                            <span class="btn btn-primary bg-white border-0 text-dark fw-bold" data-bs-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-                                <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
-                                    10/10/2024 - EFD-Contribuições
-                            </span>
-                            <ul class="collapse mt-2 ms-3" id="collapseExample1">
-                                <li>Empresa 1</li>
-                                <li>Empresa 2</li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item" style="border-bottom: 2px solid #ccc;">
-                            <span class="btn btn-primary bg-white border-0 text-dark fw-bold" data-bs-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
-                                <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
-                                    15/10/2024 - DCTFWeb
-                            </span>
-                            <ul class="collapse mt-2 ms-3" id="collapseExample2">
-                                <li>Empresa 1</li>
-                                <li>Empresa 2</li>
-                            </ul>
-                        </li>
-                        <li class="list-group-item border-bottom" style="border-bottom: 2px solid #ccc;">
-                            <span class="btn btn-primary bg-white border-0 text-dark fw-bold" data-bs-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
-                                <i class="fa-solid fa-caret-right fa-2xl toggle-icon"></i>
-                                    20/10/2024 - Obrigação 3
-                            </span>
-                            <ul class="collapse mt-2 ms-3" id="collapseExample3">
-                                <li>Empresa 1</li>
-                                <li>Empresa 2</li>
-                            </ul>
-                        </li>
-                        <!-- Continue adicionando obrigações -->
-                    </ul>
+                <div class="card-body text-dark p-0" style="overflow-y: auto;">
+                    <table class="table table-bordered rounded-3 overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th style="width: 30%;">Vencimento</th>
+                                <th style="width: 70%;">Obrigação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>15/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample2">
+                                        DCTFWeb
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>20/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample3">
+                                        Obrigação 3
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10/10/2024</td>
+                                <td>
+                                    <button class="btn btn-link" data-bs-toggle="collapse" data-bs-target="#collapseExample1">
+                                        EFD-Contribuições
+                                    </button>
+                                </td>
+                            </tr>
+                            
+
+                            
+                            
+                            
+
+                            <!-- Continue adicionando obrigações aqui -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer text-white fw-bold d-flex justify-content-center align-items-center" style="background-color: black; height: 5vh">
+                    <h5 class="mb-0">Janeiro/2025</h5>
                 </div>
             </div>
         </div>
