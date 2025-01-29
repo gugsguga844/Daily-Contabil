@@ -3,6 +3,8 @@
 use App\Controllers\HomeController;
 use Core\Router\Route;
 use App\Controllers\AuthenticationsController;
+use App\Controllers\CategoriesController;
+use App\Controllers\SubCategoriesController;
 use App\Controllers\TutorialsController;
 use App\Controllers\UsersController;
 
@@ -20,8 +22,18 @@ Route::middleware('auth')->group(function () {
     // Home
     Route::get('/home', [HomeController::class, 'index'])->name('home.index');
 
+    // Categories
+    Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
+    Route::get('/categories/page/{page}', [CategoriesController::class, 'index'])->name('categories.paginate');
+    Route::get('/categories/{id}', [CategoriesController::class, 'show'])->name('categories.show');
+
+    // SubCategories
+    Route::get('/subcategories', [SubCategoriesController::class, 'index'])->name('subcategories.index');
+    Route::get('/subcategories/page/{page}', [SubCategoriesController::class, 'index'])->name('subcategories.paginate');
+
     // Tutorials
-    Route::get('/tutorials', [TutorialsController::class, 'index'])->name('tutorials.index');
+    Route::get('/subcategories', [TutorialsController::class, 'index'])->name('tutorials.index');
+    Route::get('/subcategories/show', [TutorialsController::class, 'show'])->name('tutorials.videos');
 
     Route::middleware('admin')->group(function () {
     // Users' CRUD:
@@ -40,5 +52,13 @@ Route::middleware('auth')->group(function () {
 
         // Delete
         Route::delete('/users/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+
+    // SubCategories' CRUD:
+        // Create
+        Route::get('/subcategories/new', [SubCategoriesController::class, 'new'])->name('subcategories.new');
+        Route::post('/subcategories', [SubCategoriesController::class, 'create'])->name('subcategories.create');
+
+        // Delete
+        Route::delete('/subcategories', [SubCategoriesController::class, 'destroy'])->name('subcategories.destroy');
     });
 });

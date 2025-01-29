@@ -1,0 +1,15 @@
+<div class="tutorials-index d-flex flex-column justify-content-center align-items-center">
+    <div class="card-container d-flex justify-content-center">
+    <?php foreach ($categories as $category) : ?> 
+        <div class="card-item">
+            <a href="<?= route('categories.show', ['id' => $category->id]) ?>">  
+                <h1><?= $category->name ?></h1>
+            </a>
+        </div>
+    <?php endforeach; ?>
+    </div>
+
+    <div class="categories-search d-flex justify-content-center align-items-center">
+        <input type="text" placeholder="Sei o que quero!">
+    </div>
+</div>
