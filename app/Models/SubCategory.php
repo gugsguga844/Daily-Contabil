@@ -33,6 +33,5 @@ class SubCategory extends Model
 
     public function validates(): void
     {
-
     }
 }

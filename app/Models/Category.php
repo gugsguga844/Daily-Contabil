@@ -24,6 +24,5 @@ class Category extends Model
 
     public function validates(): void
     {
-
     }
 }

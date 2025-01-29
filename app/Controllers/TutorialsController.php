@@ -15,7 +15,7 @@ class TutorialsController extends Controller
     {
         $subcategoryId = $request->getParam('subcategory_id');
         $subcategory = SubCategory::findById($subcategoryId);
-        
+
         $tutorials = $subcategory->tutorials;
 
         if ($request->acceptJson()) {

@@ -29,7 +29,6 @@ class Tutorial extends Model
 
     public function validates(): void
     {
-        
     }
 
     public function authenticate(string $password): bool
