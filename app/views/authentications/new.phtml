@@ -1,28 +1,23 @@
 <h3 class="text-center mb-4">Login</h3>
 <form ACTION="/login" method="POST">
-    <!-- Campo de email -->
     <div class="mb-3">
     <label for="email" class="form-label">Email</label>
     <input type="email" name="user[email]" class="form-control" id="email" placeholder="Digite seu email" required>
     </div>
     
-    <!-- Campo de senha -->
     <div class="mb-3">
     <label for="password" class="form-label">Senha</label>
     <input type="password" name="user[password]" class="form-control" id="password" placeholder="Digite sua senha" required>
     </div>
 
-    <!-- Checkbox para lembrar login -->
     <div class="form-check mb-3">
     <input type="checkbox" class="form-check-input" id="remember">
     <label class="form-check-label" for="remember">Lembrar-me</label>
     </div>
 
-    <!-- Botão de login -->
     <button type="submit" class="btn btn-primary w-100">Entrar</button>
 </form>
 
-<!-- Link de cadastro ou recuperação -->
 <div class="text-center mt-3">
     <small>
     <a href="#">Esqueceu sua senha?</a> | <a href="#">Cadastre-se</a>
