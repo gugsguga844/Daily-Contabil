@@ -31,15 +31,6 @@ class Tutorial extends Model
     {
     }
 
-    public function authenticate(string $password): bool
-    {
-        if ($this->encrypted_password == null) {
-            return false;
-        }
-
-        return password_verify($password, $this->encrypted_password);
-    }
-
     public static function findById(int $id): ?static
     {
         return Tutorial::findBy(['id' => $id]);

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/assets/css/newUser.css">
     <link rel="stylesheet" href="/assets/css/tutorials/index.css">
     <link rel="stylesheet" href="/assets/css/subcategories/subcategories.css">
+    <link rel="stylesheet" href="/assets/css/profile/profile.css">
 </head>
 <body style="background-color: #ffffff; color: white;">
     <header>
@@ -22,17 +23,17 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <li class="me-auto nav-item" style="list-style-type: none;">
-                        <a class="nav-link active" aria-current="page" href="<?= route('home.index') ?>"> Início <span class="sr-only">(current)</span></a>
+                        <a class="nav-link active" aria-current="page" href="<?= route('home.index') ?>"><i class="fa-solid fa-house"></i> Início <span class="sr-only">(current)</span></a>
                     </li>
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="<?= route('categories.index') ?>"> Tutoriais </a>
+                            <a class="nav-link active" href="<?= route('categories.index') ?>"><i class="fa-solid fa-video"></i> Tutoriais </a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link active" href="#"> Empresas </a>                        
+                            <a class="nav-link active" href="#"><i class="fa-solid fa-briefcase"></i> Empresas </a>                        
                         </li> 
                         <li class="nav-item">
-                            <a class="nav-link active" href="#"> Agenda Tributária </a>
+                            <a class="nav-link active" href="#"><i class="fa-solid fa-calendar-days"></i> Agenda Tributária </a>
                         </li>                       
                     </ul>
                     <li class="nav-item dropdown ms-auto" style="list-style-type: none;">
@@ -40,7 +41,7 @@
                             <i class="fa-solid fa-circle-user fa-2xl" style="color: white; font-weight: bold;"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Dados Pessoais</a>
+                            <a class="dropdown-item" href="<?= route('profile.show') ?>">Dados Pessoais</a>
                             <?php if ($_SESSION['role'] === 'admin'): ?>
                             <a class="dropdown-item" href="<?= route('users.index') ?>">Usuários</a>
                             <?php endif; ?>

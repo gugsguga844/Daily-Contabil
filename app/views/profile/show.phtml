@@ -1,0 +1,45 @@
+<div class="container-fluid p-0">
+    <div class="row">
+        <div class="col-2">
+            <ul class="nav nav-tabs flex-column profile-menu">
+                <li class="nav-item profile_picture cursor-pointer">
+                    <a class="nav-link active" href="#">
+                        <img id="image_preview" class="avatar rounded img-thumbnail img-fluid" src="<?= $this->current_user->avatar()->path() ?>" alt="avatar">
+                        <div class="overlay">
+                            <i class="fa-solid fa-camera fa-xl" style="color: #fff;"></i>
+                            <div class="text">Alterar Imagem</div>
+                        </div>
+                        <form action="<?= route('profile.avatar') ?>" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<?= $this->current_user->id ?>">
+                            <input id="image_preview_input" type="file" name="user_avatar" id="user_avatar">
+                            <div class="d-grid mt-2">
+                                <button id="image_preview_submit" type="submit" class="btn btn-fill btn-primary">Atualizar</button>
+                            </div>
+                        </form>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <form action="<?= route('profile.remove') ?>" method="POST" enctype="multipart/form-data">
+                        <div class="d-grid mt-2">
+                            <button type="submit" class="btn btn-fill btn-primary">Remover Imagem</button>
+                        </div>
+                    </form>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        Conta
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">
+                        Segurança
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-10 text-dark d-flex justify-content-center align-items-center">
+            <h1> Dados Pessoais </h1>
+        </div>
+    </div>
+</div>
