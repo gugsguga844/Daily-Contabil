@@ -49,7 +49,7 @@ class SubCategoriesController extends Controller
             $this->redirectTo(route('subcategories.index', ['category_id' => $categoryId]));
         } else {
             FlashMessage::danger('Existem dados incorretos! Por favor verifique!');
-            $this->render('subcategories/new', compact('subcategory'));
+            $this->render('subcategories/new', compact('subcategory', 'categoryId'));
         }
     }
 

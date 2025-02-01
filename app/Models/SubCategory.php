@@ -33,5 +33,11 @@ class SubCategory extends Model
 
     public function validates(): void
     {
+        Validations::notEmpty('name', $this);
+    }
+
+    public static function findById(int $id): ?static
+    {
+        return SubCategory::findBy(['id' => $id]);
     }
 }
