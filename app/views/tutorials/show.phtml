@@ -1,3 +1,20 @@
-<div class="container-fluid">
-    
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center text-dark">
+            <h1><?= $tutorial->title ?></h1> 
+        </div>  
+    </div>
+
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+            <iframe 
+                src="<?= $tutorial->link ?>" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                style="width: 50%; height: 50vh">
+            </iframe>
+        </div>
+    </div>
 </div>

@@ -66,5 +66,10 @@ Route::middleware('auth')->group(function () {
 
         // Delete
         Route::delete('/subcategories', [SubCategoriesController::class, 'destroy'])->name('subcategories.destroy');
+
+    // Tutorials' CRUD:
+        // Create
+        Route::get('/tutorials/new', [TutorialsController::class, 'new'])->name('tutorials.new');
+        Route::post('/tutorials', [TutorialsController::class, 'create'])->name('tutorials.create');
     });
 });

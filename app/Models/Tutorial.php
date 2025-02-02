@@ -35,22 +35,4 @@ class Tutorial extends Model
     {
         return Tutorial::findBy(['id' => $id]);
     }
-
-    public function __set(string $property, mixed $value): void
-    {
-        parent::__set($property, $value);
-
-        if (
-            $property === 'password' &&
-            $this->newRecord() &&
-            $value !== null && $value !== ''
-        ) {
-            $this->encrypted_password = password_hash($value, PASSWORD_DEFAULT);
-        }
-    }
-
-        // public function avatar(): ProfileAvatar
-        // {
-        //     return new ProfileAvatar($this);
-        // }
 }
