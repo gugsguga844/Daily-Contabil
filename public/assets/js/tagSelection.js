@@ -8,7 +8,7 @@ class MultiSelect {
 
     constructor(element, options = {}) {
         let defaults = {
-            placeholder: 'Select item(s)',
+            placeholder: 'Selecionar Tags',
             max: null,
             search: true,
             selectAll: true,
@@ -63,7 +63,7 @@ class MultiSelect {
         if (this.options.selectAll === true || this.options.selectAll === 'true') {
             selectAllHTML = `<div class="multi-select-all">
                 <span class="multi-select-option-radio"></span>
-                <span class="multi-select-option-text">Select all</span>
+                <span class="multi-select-option-text">Selecionar Todas</span>
             </div>`;
         }
         let template = `
@@ -74,7 +74,7 @@ class MultiSelect {
                     <span class="multi-select-header-placeholder">${this.placeholder}</span>
                 </div>
                 <div class="multi-select-options" style="${this.options.dropdownWidth ? 'width:' + this.options.dropdownWidth + ';' : ''}${this.options.dropdownHeight ? 'height:' + this.options.dropdownHeight + ';' : ''}">
-                    ${this.options.search === true || this.options.search === 'true' ? '<input type="text" class="multi-select-search" placeholder="Search...">' : ''}
+                    ${this.options.search === true || this.options.search === 'true' ? '<input type="text" class="multi-select-search" placeholder="Pesquisar...">' : ''}
                     ${selectAllHTML}
                     ${optionsHTML}
                 </div>

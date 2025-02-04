@@ -10,12 +10,18 @@ use Core\Database\ActiveRecord\Model;
 /**
  * @property int $id
  * @property string $name
+ * @property Tutorial[] $tag_tutorials
  */
 
 class Tag extends Model
 {
     protected static string $table = 'tags';
     protected static array $columns = ['name'];
+
+    public function tagTutorials(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'tag_tutorial_filter', 'problem_id', 'user_id');
+    }
 
     public function validates(): void
     {

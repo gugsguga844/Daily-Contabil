@@ -73,8 +73,8 @@
 
             <div class="row">
                 <div class="col-12">
-                    <label class="text-dark fw-bold" for="status">Adicionar Tags</label>
-                    <select class="form-select" name="tutorial[tags][]" id="status" multiple data-multi-select>
+                    <label class="text-dark fw-bold" for="tags">Adicionar Tags</label>
+                    <select class="form-select" name="tags" id="tags" multiple data-multi-select>
                         <?php foreach ($tags as $tag) : ?> 
                             <option value="<?= $tag->id ?>"><?= $tag->name ?></option>
                         <?php endforeach; ?>

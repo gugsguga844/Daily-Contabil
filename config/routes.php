@@ -6,6 +6,7 @@ use App\Controllers\AuthenticationsController;
 use App\Controllers\CategoriesController;
 use App\Controllers\ProfileController;
 use App\Controllers\SubCategoriesController;
+use App\Controllers\TagTutorialFilterController;
 use App\Controllers\TutorialsController;
 use App\Controllers\UsersController;
 
@@ -71,5 +72,9 @@ Route::middleware('auth')->group(function () {
         // Create
         Route::get('/tutorials/new', [TutorialsController::class, 'new'])->name('tutorials.new');
         Route::post('/tutorials', [TutorialsController::class, 'create'])->name('tutorials.create');
+
+    // Tags' CRUD:
+        // Delete
+        Route::delete('/tags', [TagTutorialFilterController::class, 'destroy'])->name('tags.destroy');
     });
 });

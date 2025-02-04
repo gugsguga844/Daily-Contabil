@@ -48,10 +48,10 @@ CREATE TABLE tag_tutorial_filter (
     id INT AUTO_INCREMENT PRIMARY KEY,
     tutorial_id INT NOT NULL,
     CONSTRAINT fk_tutorial FOREIGN KEY (tutorial_id)
-    REFERENCES tutorials(id) ON DELETE RESTRICT,
+    REFERENCES tutorials(id) ON DELETE CASCADE,
     tag_id INT NOT NULL,
     CONSTRAINT fk_tag FOREIGN KEY (tag_id)
-    REFERENCES tags(id) ON DELETE RESTRICT
+    REFERENCES tags(id) ON DELETE CASCADE
 );
 
 SET foreign_key_checks = 1;

@@ -16,6 +16,7 @@ use Core\Database\ActiveRecord\Model;
  * @property string $recorded_at
  * @property int $subcategory_id
  * @property SubCategory $subcategory
+ * @property Tag[] $tutorial_tags
  */
 class Tutorial extends Model
 {
@@ -27,6 +28,11 @@ class Tutorial extends Model
         return $this->belongsTo(SubCategory::class, 'subcategory_id');
     }
 
+    public function tutorialTags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'tag_tutorial_filter', 'tutorial_id', 'tag_id');
+    }
+
     public function validates(): void
     {
     }
@@ -35,4 +41,10 @@ class Tutorial extends Model
     {
         return Tutorial::findBy(['id' => $id]);
     }
+
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, TagTutorialFilter::class, 'tutorial_id', 'tag_id');
+    }
+
 }
