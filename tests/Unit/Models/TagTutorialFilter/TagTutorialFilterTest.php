@@ -14,6 +14,7 @@ class TagTutorialFilterTest extends TestCase
     private Tag $tag;
     private Tutorial $tutorial;
     private TagTutorialFilter $tagTutorial;
+    private TagTutorialFilter $tagTutorial2;
     private Category $category;
     private SubCategory $subcategory;
 
@@ -58,5 +59,24 @@ class TagTutorialFilterTest extends TestCase
     {
         $getId = TagTutorialFilter::findById($this->tagTutorial->id);
         $this->assertNotNull($getId, 'Não encontrado');
+    }
+
+    public function test_should_delete_tagtutorialfilter(): void
+    {
+        $this->tagTutorial->destroy();
+        $this->assertCount(0, TagTutorialFilter::all());
+    }
+
+    public function test_should_delete_tagtutorialfilter_on_delete_tutorial(): void
+    {
+        $this->tutorial->destroy();
+        $this->assertCount(0, TagTutorialFilter::all());
+    }
+
+    public function test_tagtutorialfilter_should_list_tutorial_and_tag_id(): void
+    {
+        $getId = TagTutorialFilter::findById($this->tagTutorial->id);
+        $this->assertNotNull($getId->tutorial_id, 'Tutorial não encontrado');
+        $this->assertNotNull($getId->tag_id, 'Tutorial não encontrado');
     }
 }
