@@ -18,7 +18,7 @@
                 <div class="card">
                     <div class="subcategory-card card shadow-sm">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="text-dark mb-0"><?= $subcategory->name ?></h2>
+                            <h5 class="fw-bold mb-0"><?= $subcategory->name ?></h2>
                             <div>
                                 <a href="<?= route('users.new') ?>">
                                     <i class="fa-regular fa-pen-to-square fa-xl"></i>
@@ -33,11 +33,18 @@
                             <ul class="list-group list-group-flush">
                                 <?php foreach ($subcategory->tutorials as $tutorial) : ?> 
                                     <li class="list-group-item">
-                                        <a href="#" class="text-decoration-none"><i class="fa-solid fa-video"></i> <?= $tutorial->title ?></a>
+                                        <a href="<?= route('tutorials.videos', ['id' => $tutorial->id]) ?>" class="text-decoration-none"><i class="fa-solid fa-video"></i> <?= $tutorial->title ?></a>
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
                         </div>
+                        <?php if ($_SESSION['role'] === 'admin'): ?>
+                            <div class="card-footer">
+                                <a class="fw-bold" href="<?= route('tutorials.new', ['subcategory_id' => $subcategory->id]) ?>">
+                                    <i class="fa-solid fa-plus"></i> Adicionar Vídeo
+                                </a> 
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

@@ -37,4 +37,21 @@ CREATE TABLE tutorials (
     REFERENCES subcategories(id) ON DELETE CASCADE
 );
 
+DROP TABLE IF EXISTS tags;
+CREATE TABLE tags (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+DROP TABLE IF EXISTS tag_tutorial_filter;
+CREATE TABLE tag_tutorial_filter (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tutorial_id INT NOT NULL,
+    CONSTRAINT fk_tutorial FOREIGN KEY (tutorial_id)
+    REFERENCES tutorials(id) ON DELETE CASCADE,
+    tag_id INT NOT NULL,
+    CONSTRAINT fk_tag FOREIGN KEY (tag_id)
+    REFERENCES tags(id) ON DELETE CASCADE
+);
+
 SET foreign_key_checks = 1;
