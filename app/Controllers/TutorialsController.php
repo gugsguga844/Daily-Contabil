@@ -57,7 +57,7 @@ class TutorialsController extends Controller
         $params = $request->getParams();
         $tutorial = new Tutorial($params['tutorial']);
         $subcategoryId = $params['tutorial']['subcategory_id'];
-        
+
         if ($tutorial->validates()) {
             FlashMessage::danger('Existem dados incorretos! Por favor, verificar!');
             $tags = Tag::all();
@@ -77,7 +77,7 @@ class TutorialsController extends Controller
             }
 
             FlashMessage::success('Vídeo adicionado com sucesso!');
-            
+
             $subcategory = SubCategory::findById($subcategoryId);
             $categoryId = $subcategory->category_id;
             $this->redirectTo(route('subcategories.index', ['category_id' => $categoryId]));

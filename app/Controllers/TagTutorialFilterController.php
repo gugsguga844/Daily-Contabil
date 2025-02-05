@@ -24,7 +24,7 @@ class TagTutorialFilterController extends Controller
 
         $tagTutorial->destroy();
         FlashMessage::success('Tag removida com sucesso!');
-        
+
         $this->redirectBack();
     }
 }
