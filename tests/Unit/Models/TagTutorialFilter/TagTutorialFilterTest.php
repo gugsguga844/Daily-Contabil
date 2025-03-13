@@ -55,7 +55,7 @@ class TagTutorialFilterTest extends TestCase
         $this->tagTutorial->save();
     }
 
-    public function test_tagtutorialfilter_should_have_both_ids(): void
+    public function test_tagtutorialfilter_should_have_exist(): void
     {
         $getId = TagTutorialFilter::findById($this->tagTutorial->id);
         $this->assertNotNull($getId, 'Não encontrado');

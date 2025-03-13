@@ -20,7 +20,7 @@ class Tag extends Model
 
     public function tagTutorials(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'tag_tutorial_filter', 'problem_id', 'user_id');
+        return $this->belongsToMany(Tutorial::class, 'tag_tutorial_filter', 'tag_id', 'tutorial_id');
     }
 
     public function validates(): void

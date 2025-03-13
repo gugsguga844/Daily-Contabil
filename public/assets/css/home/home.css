@@ -1,0 +1,45 @@
+.main-section {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #F2F2F2;
+}
+
+.title-section {
+    margin: 84px;
+    text-align: center;
+}
+
+.title {
+    color: black;
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.title-description {
+    color: #71717A;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.main-buttons {
+    text-align: center;
+}
+
+.mainButton {
+    border-radius: 6px;
+    padding: 10px 32px;
+    margin: 10px;
+    border: none;
+}
+
+#mainButtonOne {
+    background-color: black;
+    color: white
+}
+
+#mainButtonTwo {
+    background-color: white;
+}

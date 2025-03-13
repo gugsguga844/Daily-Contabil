@@ -1,115 +1,26 @@
-body {
-  overflow: hidden;
-}
-
-.nav-link {
-  color: white;
-  font-weight: bold;
-}
-
-.navbar-nav .nav-link {
-  color: white;
-  font-weight: bold;
-}
-
-.navbar-nav .nav-link.active {
-  font-weight: bold;
-  color: white;
-}
-
-.form-control {
-  max-width: 300px; /* Define uma largura máxima para o campo de busca */
-}
-
-.navbar-toggler-icon {
-  filter: invert(1); /* Deixa o ícone do menu branco */
-}
-
-.dropdown-menu-right {
-  right: 0 !important;
-  left: auto !important;
-}
-
-.login {
-  height: 100vh;
-  width: 100vw;
-}
-
-.loginBg {
+.header-nav {
   background-color: black;
-}
-
-.loginForm p {
-  color: black;
-}
-
-input {
-  display: block;
-  width: 100%;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  height: 50px;
-  background-color: #f7f7f7;
-}
-
-::placeholder {
-  color: black;
+  color: white;
+  padding: 25px 100px;
   font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.defaultButton a,
-.defaultButton button{
-  background-color: black;
-  border: 1px solid #6D6D6D;
-  width: 100%;
+.header-a {
   text-decoration: none;
-  color: black;
-  font-weight: bold;
-  padding: 12px 120px;
-  line-height: initial;
-  border-radius: 5px;
-  display: inline-block;
-  margin-top: 20%;
-  text-align: center;
-  color: white;
+  color: white
 }
 
-.modal-content {
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.header-ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  margin-bottom: 0;
+  margin: 0px;
 }
 
-.modal-header {
-  background-color: black;
-}
-
-/* Botão de fechar branco */
-.btn-close-white {
-  filter: invert(1);
-}
-
-/* Adicionar espaçamento no corpo */
-.modal-body p {
-  margin-bottom: 0.5rem;
-}
-
-.defaultButton button[disabled] {
-  background-color: #ccc;
-}
-
-.loginForm .form-message.form-warning {
-  color: #d50f22;
-}
-
-.page-link {
-  color: black;
-  font-weight: bold;
-  background-color: white;
-  border-color: black;
-}
-
-.active>.page-link {
-  background-color: black;
-  color: white;
+.header-item {
+  margin: 0px 20px
 }
