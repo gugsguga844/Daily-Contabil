@@ -19,7 +19,7 @@ use Core\Database\ActiveRecord\Model;
 class SubCategory extends Model
 {
     protected static string $table = 'subcategories';
-    protected static array $columns = ['name', 'category_id'];
+    protected static array $columns = ['name', 'description', 'category_id'];
 
     public function tutorials(): HasMany
     {

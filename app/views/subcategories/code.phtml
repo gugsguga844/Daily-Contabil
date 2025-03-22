@@ -1,0 +1,53 @@
+<div class="container-fluid py-4">
+    <div class="row g-0">
+        <div class="col-12 col-md-6 px-3 py-3">
+            <input type="text" class="tutorials-search" placeholder="Pesquisar tutorial">
+        </div>
+        <div class="col-12 col-md-6 px-3 py-3">
+            <div class="btn new-subcategory">
+                <a class="d-flex align-items-center justify-content-center" href="<?= route('subcategories.new', ['category_id' => $category->id]) ?>">
+                    <i class="fa-solid fa-plus fa-xl"></i>
+                    <span class="text-center fs-3"> Adicionar Categoria </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row g-0">
+        <?php foreach ($subcategories as $subcategory) : ?> 
+            <div class="col-12 col-md-6 px-3 py-3 border-0">
+                <div class="card">
+                    <div class="subcategory-card card shadow-sm">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold mb-0"><?= $subcategory->name ?></h2>
+                            <div>
+                                <a href="<?= route('users.new') ?>">
+                                    <i class="fa-regular fa-pen-to-square fa-xl"></i>
+                                </a>
+                                <i class="fa-solid fa-trash fa-xl text-danger cursor-pointer" onclick="event.preventDefault(); document.getElementById('delete-form-<?= $subcategory->id ?>').submit();"></i>
+                                <form id="delete-form-<?= $subcategory->id ?>" action="<?= route('subcategories.destroy', ['id' => $subcategory->id]) ?>" method="POST">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <?php foreach ($subcategory->tutorials as $tutorial) : ?> 
+                                    <li class="list-group-item">
+                                        <a href="<?= route('tutorials.videos', ['id' => $tutorial->id]) ?>" class="text-decoration-none"><i class="fa-solid fa-video"></i> <?= $tutorial->title ?></a>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php if ($_SESSION['role'] === 'admin'): ?>
+                            <div class="card-footer">
+                                <a class="fw-bold" href="<?= route('tutorials.new', ['subcategory_id' => $subcategory->id]) ?>">
+                                    <i class="fa-solid fa-plus"></i> Adicionar Vídeo
+                                </a> 
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>

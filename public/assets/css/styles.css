@@ -1,0 +1,113 @@
+/* Estilos adicionais para o sistema de treinamento contábil */
+
+/* Variáveis de cores personalizadas */
+:root {
+    --color-primary: hsl(160, 84%, 39%);
+    --color-primary-light: hsl(160, 84%, 45%);
+    --color-primary-dark: hsl(160, 84%, 30%);
+    --color-secondary: hsl(196, 64%, 24%);
+    --color-muted: hsl(160, 20%, 96%);
+    --color-muted-foreground: hsl(160, 30%, 30%);
+  }
+  
+  /* Estilos de animação */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .slide-down {
+    animation: slideDown 0.3s ease-in-out;
+  }
+  
+  /* Estilos para os dropdowns */
+  .dropdown-content {
+    transition: all 0.2s ease-in-out;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    height: 0;
+  }
+  
+  .dropdown-content.show {
+    transform: scaleY(1);
+    opacity: 1;
+    height: auto;
+  }
+  
+  /* Estilos para os cards de obrigações fiscais */
+  .fiscal-obligation {
+    transition: background-color 0.2s ease;
+  }
+  
+  .fiscal-obligation:hover {
+    background-color: hsl(160, 20%, 92%);
+  }
+  
+  .companies-list {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Estilos para botões com hover mais suave */
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    transition: background-color 0.2s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--color-primary-light);
+  }
+  
+  .btn-primary:active {
+    background-color: var(--color-primary-dark);
+  }
+  
+  /* Estilos para melhorar a acessibilidade */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  
+  /* Estilos para impressão */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  
+    body {
+      font-size: 12pt;
+      color: #000;
+      background-color: #fff;
+    }
+  
+    .container {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  
+  

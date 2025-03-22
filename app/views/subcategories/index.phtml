@@ -1,49 +1,118 @@
-<div class="container-fluid py-4">
-    <div class="row g-0">
-        <div class="col-12 col-md-6 px-3 py-3">
-            <input type="text" class="tutorials-search" placeholder="Pesquisar tutorial">
+<div class="bg-gradient-to-r from-primary/10 to-primary/5 py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center mb-4">
+            <a href="/tutoriais.html" class="text-gray-600 hover:text-primary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 inline-block mr-1">
+                    <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Voltar para Categorias
+            </a>
         </div>
-        <div class="col-12 col-md-6 px-3 py-3">
-            <div class="btn new-subcategory">
-                <a class="d-flex align-items-center justify-content-center" href="<?= route('subcategories.new', ['category_id' => $category->id]) ?>">
-                    <i class="fa-solid fa-plus fa-xl"></i>
-                    <span class="text-center fs-3"> Adicionar Categoria </span>
-                </a>
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+                <h1 class="text-3xl font-bold mb-2 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary mr-2">
+                        <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1Z"></path>
+                        <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                        <path d="M12 17.5v-11"></path>
+                    </svg>
+                    Tutoriais Fiscais
+                </h1>
+                <p class="text-gray-600 max-w-2xl">
+                    Vídeos sobre obrigações fiscais, impostos e procedimentos tributários para manter seu escritório atualizado e em conformidade com a legislação.
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-primary/10 text-primary">
+                    24 vídeos disponíveis
+                </span>
             </div>
         </div>
     </div>
-    <div class="row g-0">
-        <?php foreach ($subcategories as $subcategory) : ?> 
-            <div class="col-12 col-md-6 px-3 py-3 border-0">
-                <div class="card">
-                    <div class="subcategory-card card shadow-sm">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <h5 class="fw-bold mb-0"><?= $subcategory->name ?></h2>
-                            <div>
-                                <a href="<?= route('users.new') ?>">
-                                    <i class="fa-regular fa-pen-to-square fa-xl"></i>
-                                </a>
-                                <i class="fa-solid fa-trash fa-xl text-danger cursor-pointer" onclick="event.preventDefault(); document.getElementById('delete-form-<?= $subcategory->id ?>').submit();"></i>
-                                <form id="delete-form-<?= $subcategory->id ?>" action="<?= route('subcategories.destroy', ['id' => $subcategory->id]) ?>" method="POST">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                </form>
-                            </div>
+</div>
+
+<!-- Barra de Pesquisa -->
+<div class="bg-white border-b">
+    <div class="container mx-auto px-4 py-4">
+        <div class="relative max-w-2xl mx-auto">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-400">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+            </div>
+            <input type="search" id="search" class="block w-full p-3 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-primary focus:border-primary focus:outline-none" placeholder="Pesquisar tutoriais fiscais..." />
+        </div>
+    </div>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="container mx-auto px-4 py-8">
+    <!-- Subcategorias -->
+    <div class="grid grid-cols-1 gap-6">
+    <?php if ($_SESSION['role'] === 'admin'): ?>
+        <div class="bg-primary rounded-lg shadow-sm border border-black overflow-hidden">
+            <div class="subcategory-header shadow-sm p-4 bg-primary cursor-pointer flex justify-center items-center">
+                <div class="flex items-center">
+                <i class="fa-regular fa-square-plus fa-xl text-white"></i>
+                    <div class="ml-4">
+                        <h3 class="text-lg font-semibold text-white">Adicionar Vídeo</h3>
+                        <p class="text-sm text-white">Crie um novo vídeo para esta categoria</p>
+                    </div>  
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
+
+        <?php foreach ($subcategories as $subcategory) : ?>
+            <div class="bg-white rounded-lg shadow-sm border border-black overflow-hidden">
+                <div class="subcategory-header p-4 bg-gray-50 cursor-pointer flex justify-between items-center" data-target="obrigacoes-<?= $subcategory->id ?>">
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-primary mr-3">
+                            <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                            <path d="M3 9h18"></path>
+                            <path d="M9 21V9"></path>
+                        </svg>
+                        <div>
+                            <h3 class="text-lg font-semibold"><?= $subcategory->name ?></h3>
+                            <p class="text-sm text-gray-500"><?= $subcategory->description ?></p>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <?php foreach ($subcategory->tutorials as $tutorial) : ?> 
-                                    <li class="list-group-item">
-                                        <a href="<?= route('tutorials.videos', ['id' => $tutorial->id]) ?>" class="text-decoration-none"><i class="fa-solid fa-video"></i> <?= $tutorial->title ?></a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down h-5 w-5 text-gray-500">
+                        <path d="m6 9 6 6 6-6"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up h-5 w-5 text-gray-500 hidden">
+                        <path d="m18 15-6-6-6 6"></path>
+                    </svg>
+                </div>
+                <div id="obrigacoes-<?= $subcategory->id ?>" class="subcategory-content border-t border-black">
+                    <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <?php foreach ($subcategory->tutorials as $tutorial) : ?>
+                            <a href="/tutoriais/fiscal/dctf-mensal" class="group">
+                                <div class="border border-black shadow-lg rounded-lg p-4 h-full hover:border-primary hover:shadow-sm transition-all">
+                                    <div class="flex items-start mb-3">
+                                        <div class="rounded-md bg-primary/10 p-2 mr-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary">
+                                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-medium group-hover:text-primary transition-colors"><?= $tutorial->title ?></h4>
+                                            <p class="text-sm text-gray-500 mt-1">12:45 min</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-600"><?= $tutorial->description ?></p>
+                                </div>
+                            </a>
+                        <?php endforeach; ?>
                         <?php if ($_SESSION['role'] === 'admin'): ?>
-                            <div class="card-footer">
-                                <a class="fw-bold" href="<?= route('tutorials.new', ['subcategory_id' => $subcategory->id]) ?>">
-                                    <i class="fa-solid fa-plus"></i> Adicionar Vídeo
-                                </a> 
-                            </div>
+                            <a href="/tutoriais/fiscal/sped-contabil" class="group">
+                                <div class="border border-black bg-primary rounded-lg p-4 h-full hover:border-primary hover:shadow-sm transition-all flex justify-center items-center">
+                                    <i class="fa-regular fa-square-plus fa-2xl text-white"></i>
+                                    <span class="text-white ml-2">Adicionar Vídeo</span>
+                                </div>
+                            </a>
                         <?php endif; ?>
                     </div>
                 </div>

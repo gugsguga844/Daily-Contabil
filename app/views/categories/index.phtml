@@ -1,15 +1,328 @@
-<div class="tutorials-index d-flex flex-column justify-content-center align-items-center">
-    <div class="card-container d-flex justify-content-center">
-    <?php foreach ($categories as $category) : ?> 
-        <div class="card-item">
-            <a href="<?= route('categories.show', ['id' => $category->id]) ?>">  
-                <h1><?= $category->name ?></h1>
-            </a>
-        </div>
-    <?php endforeach; ?>
+<div class="bg-gradient-to-r from-primary/10 to-primary/5 py-12">
+    <div class="container mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">
+            Tutoriais e Vídeos de Treinamento
+        </h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Explore nossos vídeos de treinamento organizados por categorias para facilitar seu aprendizado e aprimorar seus conhecimentos contábeis.
+        </p>
     </div>
-
-    <div class="categories-search d-flex justify-content-center align-items-center">
-        <input type="text" placeholder="Sei o que quero!">
+    <div class="max-w-3xl mx-auto py-4">
+        <div class="relative">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-400">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+            </div>
+            <input type="search" id="search" class="block w-full p-4 pl-10 text-sm border border-gray-300 rounded-lg focus:ring-primary focus:border-primary focus:outline-none" placeholder="Pesquisar por tutoriais, tópicos ou palavras-chave..." />
+            <button type="submit" class="absolute right-2.5 bottom-2.5 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg text-sm px-4 py-2 transition-colors">
+                Pesquisar
+            </button>
+        </div>
+        <p class="text-sm text-gray-500 mt-2 text-center">
+            Encontre rapidamente o conteúdo que você precisa em todas as categorias de tutoriais
+        </p>
     </div>
 </div>
+
+<!-- Categorias de Vídeos -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Categoria Fiscal -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden transition-all hover:shadow-md">
+                <div class="p-4 pb-3">
+                    <div class="flex justify-between items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary">
+                            <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1Z"></path>
+                            <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                            <path d="M12 17.5v-11"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
+                            24 vídeos
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Fiscal</h3>
+                    <p class="text-gray-500 text-sm">Obrigações fiscais, impostos e procedimentos tributários.</p>
+                </div>
+                <div class="px-4 h-25 pb-4 overflow-y-auto">
+                    <div class="space-y-2">
+                        <a href="/tutoriais/fiscal/dctf-mensal" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Como preencher a DCTF Mensal corretamente</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/fiscal/efd-contribuicoes" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">EFD Contribuições: Principais erros e como evitá-los</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/fiscal/pis-cofins" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Cálculo de PIS/COFINS para empresas do Lucro Real</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <a href="/tutoriais/fiscal" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium block text-center">
+                        Ver todos os vídeos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categoria Contábil -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden transition-all hover:shadow-md">
+                <div class="p-4 pb-3">
+                    <div class="flex justify-between items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <path d="M8 13h2"></path>
+                            <path d="M8 17h2"></path>
+                            <path d="M14 13h2"></path>
+                            <path d="M14 17h2"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
+                            18 vídeos
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Contábil</h3>
+                    <p class="text-gray-500 text-sm">Conteúdo sobre lançamentos contábeis, demonstrações e normas.</p>
+                </div>
+                <div class="px-4 h-25 pb-4 overflow-y-auto">
+                    <div class="space-y-2">
+                        <a href="/tutoriais/contabil/balanco-patrimonial" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Elaboração do Balanço Patrimonial conforme IFRS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/contabil/dre" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Demonstração do Resultado do Exercício (DRE)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/contabil/conciliacao" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Técnicas de conciliação contábil eficiente</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <a href="/tutoriais/contabil" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium block text-center">
+                        Ver todos os vídeos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categoria Diversos -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden transition-all hover:shadow-md">
+                <div class="p-4 pb-3">
+                    <div class="flex justify-between items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
+                            12 vídeos
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Diversos</h3>
+                    <p class="text-gray-500 text-sm">Tópicos variados como departamento pessoal, gestão e tecnologia.</p>
+                </div>
+                <div class="px-4 h-25 pb-4 overflow-y-auto">
+                    <div class="space-y-2">
+                        <a href="/tutoriais/diversos/esocial" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Implementação do eSocial no departamento pessoal</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/diversos/lgpd" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">LGPD: Impactos para escritórios contábeis</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/diversos/home-office" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Gestão de equipes contábeis em home office</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <a href="/tutoriais/diversos" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium block text-center">
+                        Ver todos os vídeos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Segunda linha com 2 cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            <!-- Categoria Trabalhista -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden transition-all hover:shadow-md">
+                <div class="p-4 pb-3">
+                    <div class="flex justify-between items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
+                            15 vídeos
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">Trabalhista</h3>
+                    <p class="text-gray-500 text-sm">Vídeos sobre legislação trabalhista, folha de pagamento e obrigações acessórias.</p>
+                </div>
+                <div class="px-4 h-25 pb-4 overflow-y-auto">
+                    <div class="space-y-2">
+                        <a href="/tutoriais/trabalhista/folha-pagamento" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Elaboração de folha de pagamento e cálculos trabalhistas</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/trabalhista/ferias-13" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Cálculo de férias e 13º salário</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/trabalhista/rescisao" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Cálculo de rescisão contratual</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <a href="/tutoriais/trabalhista" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium block text-center">
+                        Ver todos os vídeos
+                    </a>
+                </div>
+            </div>
+
+            <!-- Categoria MEI -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden transition-all hover:shadow-md">
+                <div class="p-4 pb-3">
+                    <div class="flex justify-between items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary">
+                            <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z"></path>
+                            <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9"></path>
+                            <path d="M12 3v6"></path>
+                        </svg>
+                        <span class="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
+                            10 vídeos
+                        </span>
+                    </div>
+                    <h3 class="text-xl font-semibold mt-4">MEI</h3>
+                    <p class="text-gray-500 text-sm">Conteúdo específico para Microempreendedores Individuais.</p>
+                </div>
+                <div class="px-4 h-25 pb-4 overflow-y-auto">
+                    <div class="space-y-2">
+                        <a href="/tutoriais/mei/abertura" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Como abrir um MEI passo a passo</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/mei/das" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Emissão e pagamento do DAS-MEI</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                        <a href="/tutoriais/mei/declaracao-anual" class="flex items-center p-1.5 rounded-md text-sm hover:bg-primary/10 group transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary mr-2 flex-shrink-0">
+                                <path d="m22 8-6 4 6 4V8Z"></path>
+                                <rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect>
+                            </svg>
+                            <span class="truncate group-hover:text-primary">Declaração Anual do MEI (DASN-SIMEI)</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto text-gray-400 group-hover:text-primary flex-shrink-0">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="p-4 border-t">
+                    <a href="/tutoriais/mei" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium block text-center">
+                        Ver todos os vídeos
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Pesquisa -->
+
+    </div>
+</section>
