@@ -11,8 +11,8 @@ class TutorialsPopulate
         $data =  [
             'title' => 'Primeiro Video',
             'description' => 'Fiscal',
-            'link' => 'Fiscal',
-            'recorded_at' => 'Fiscal',
+            'link' => 'https://www.youtube.com/embed/3zorNV-5Mac?si=qIvz2GZvfNmjYjTx',
+            'recorded_at' => '02/04/2025',
             'subcategory_id' => 1
         ];
     

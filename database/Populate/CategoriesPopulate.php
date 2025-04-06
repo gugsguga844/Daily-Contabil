@@ -29,7 +29,21 @@ class CategoriesPopulate
         $category = new Category($data);
         $category->save();
 
-        $numberOfCategories = 3;
+        $data =  [
+            'name' => 'Trabalhista'
+        ];
+
+        $category = new Category($data);
+        $category->save();
+
+        $data =  [
+            'name' => 'MEI'
+        ];
+
+        $category = new Category($data);
+        $category->save();
+
+        $numberOfCategories = 5;
 
         echo "Categories populated with $numberOfCategories registers\n";
     }
