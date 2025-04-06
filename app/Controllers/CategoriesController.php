@@ -23,7 +23,6 @@ class CategoriesController extends Controller
     public function show(Request $request): void
     {
         $params = $request->getParams();
-
         $category = Category::findById($params['id']);
 
         if (!$category) {
@@ -31,8 +30,6 @@ class CategoriesController extends Controller
             return;
         }
 
-        $subcategories = $category->subcategories;
-
-        $this->render('subcategories/index', compact('category', 'subcategories'));
+        $this->redirectTo(route('subcategories.index', ['category_id' => $category->id]));
     }
 }

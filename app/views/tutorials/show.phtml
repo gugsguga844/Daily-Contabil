@@ -1,3 +1,235 @@
-<div class="container-fluid">
-    
+<div class="bg-gradient-to-r from-primary/10 to-primary/5 py-4">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center">
+            <a href="<?= route('categories.index') ?>" class="text-gray-600 hover:text-primary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 inline-block mr-1">
+                    <path d="m15 18-6-6 6-6"></path>
+                </svg>
+                Voltar para Categorias
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Conteúdo Principal -->
+<div class="container mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Coluna Principal (Vídeo e Informações) -->
+        <div class="lg:col-span-2">
+            <!-- Player de Vídeo -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden mb-6">
+                <div class="video-container">
+                    <iframe
+                        src="<?= $tutorial->link ?>"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                        style="width: 100%; height: 50vh">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Informações do Vídeo -->
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden p-6">
+                <!-- Título e Ações -->
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                    <h1 class="text-2xl font-bold mb-2 md:mb-0"><?= $tutorial->title ?></h1>
+                    <div class="flex space-x-2">
+                        <button class="inline-flex items-center text-gray-500 hover:text-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                            </svg>
+                            <span class="ml-1 text-sm">Favoritar</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Estatísticas -->
+                <div class="flex flex-wrap items-center text-sm text-gray-500 mb-6 gap-4">
+                    
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect>
+                            <line x1="16" x2="16" y1="2" y2="6"></line>
+                            <line x1="8" x2="8" y1="2" y2="6"></line>
+                            <line x1="3" x2="21" y1="10" y2="10"></line>
+                        </svg>
+                        <span>Gravado em 15/02/2025</span>
+                    </div>
+                </div>
+                
+                <!-- Tags -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Tags:</h3>
+                    <?php if (!empty($tags)): ?>
+                        <div class="flex flex-wrap gap-2">
+                        <?php foreach ($tags as $tag): ?>
+                            <a href="/tutoriais/tags/dctf" class="tag bg-primary/10 text-primary hover:text-white text-sm px-3 py-1 rounded-full transition-colors">
+                                <?= $tag->name ?>
+                            </a>
+                        <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <p class="text-gray-500">Nenhuma tag associada a este vídeo.</p>   
+                    <?php endif; ?>
+                </div>
+
+                <!-- Descrição -->
+                <div class="mb-6">
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Descrição:</h3>
+                    <div class="text-gray-700 space-y-4">
+                        <p>
+                            <?= $tutorial->description ?>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Materiais Complementares -->
+                <div>
+                    <h3 class="text-sm font-medium text-gray-700 mb-2">Materiais Complementares:</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-3">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-700">Manual de Preenchimento DCTF.pdf</p>
+                                <p class="text-sm text-gray-500">PDF - 2.4 MB</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-400">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="flex items-center p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-3">
+                                <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                            </svg>
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-700">Checklist DCTF Mensal.xlsx</p>
+                                <p class="text-sm text-gray-500">Excel - 520 KB</p>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-gray-400">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coluna Lateral (Vídeos Relacionados) -->
+        <div>
+            <div class="bg-white rounded-lg shadow-sm border overflow-hidden">
+                <div class="p-4 border-b">
+                    <h2 class="font-semibold text-gray-800">Vídeos Relacionados</h2>
+                </div>
+                <div class="divide-y">
+                    <!-- Vídeo Relacionado 1 -->
+                    <a href="#" class="block p-4 hover:bg-gray-50 transition-colors">
+                        <div class="flex">
+                            <div class="flex-shrink-0 relative w-24 h-16 rounded overflow-hidden mr-3">
+                                <img src="/placeholder.svg?height=90&width=160" alt="Thumbnail" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-800 line-clamp-2">EFD Contribuições: Principais erros e como evitá-los</h3>
+                                <p class="text-xs text-gray-500 mt-1">18:30 min</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Vídeo Relacionado 2 -->
+                    <a href="#" class="block p-4 hover:bg-gray-50 transition-colors">
+                        <div class="flex">
+                            <div class="flex-shrink-0 relative w-24 h-16 rounded overflow-hidden mr-3">
+                                <img src="/placeholder.svg?height=90&width=160" alt="Thumbnail" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-800 line-clamp-2">Guia completo da EFD ICMS/IPI</h3>
+                                <p class="text-xs text-gray-500 mt-1">22:15 min</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Vídeo Relacionado 3 -->
+                    <a href="#" class="block p-4 hover:bg-gray-50 transition-colors">
+                        <div class="flex">
+                            <div class="flex-shrink-0 relative w-24 h-16 rounded overflow-hidden mr-3">
+                                <img src="/placeholder.svg?height=90&width=160" alt="Thumbnail" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-800 line-clamp-2">SPED Contábil: Configuração e envio</h3>
+                                <p class="text-xs text-gray-500 mt-1">15:40 min</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Vídeo Relacionado 4 -->
+                    <a href="#" class="block p-4 hover:bg-gray-50 transition-colors">
+                        <div class="flex">
+                            <div class="flex-shrink-0 relative w-24 h-16 rounded overflow-hidden mr-3">
+                                <img src="/placeholder.svg?height=90&width=160" alt="Thumbnail" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-800 line-clamp-2">Cálculo de PIS/COFINS para empresas do Lucro Real</h3>
+                                <p class="text-xs text-gray-500 mt-1">20:15 min</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Vídeo Relacionado 5 -->
+                    <a href="#" class="block p-4 hover:bg-gray-50 transition-colors">
+                        <div class="flex">
+                            <div class="flex-shrink-0 relative w-24 h-16 rounded overflow-hidden mr-3">
+                                <img src="/placeholder.svg?height=90&width=160" alt="Thumbnail" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 flex items-center justify-center bg-black/20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 text-white">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-sm font-medium text-gray-800 line-clamp-2">Emissão de NF-e passo a passo</h3>
+                                <p class="text-xs text-gray-500 mt-1">17:20 min</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="p-4 border-t">
+                    <a href="/tutoriais/fiscal/obrigacoes-acessorias.html" class="text-primary hover:text-primary-dark text-sm font-medium flex items-center justify-center">
+                        Ver todos os vídeos
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

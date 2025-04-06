@@ -10,6 +10,7 @@ class SubCategoriesPopulate
     {
         $data =  [
             'name' => 'Extrato',
+            'description' => 'Extrato de movimentações financeiras',
             'category_id' => 1
         ];
     
@@ -18,6 +19,7 @@ class SubCategoriesPopulate
 
         $data =  [
             'name' => 'Parcelamentos',
+            'description' => 'Extrato de movimentações',
             'category_id' => 1
         ];
 
@@ -26,6 +28,7 @@ class SubCategoriesPopulate
 
         $data =  [
             'name' => 'Relatorios',
+            'description' => 'Extrato de movimentações financeiras',
             'category_id' => 2
         ];
 
