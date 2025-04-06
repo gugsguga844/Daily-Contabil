@@ -1,6 +1,6 @@
-## Problem Track
+## Daily Contábil
 
-"Problem Track" is the ultimate solution for organizations seeking to enhance their problem resolution processes, drive operational efficiency, and deliver exceptional customer experiences.
+"Daily Contábil" is designed to help Accounting Offices in their daily routines, including employees' training, tax calendar for taxes and a personal diary/to do list
 
 ### Dependências
 
@@ -12,8 +12,8 @@
 #### Clone Repository
 
 ```
-$ git clone git@github.com:SI-DABE/problem-track.git
-$ cd problem-track
+$ git clone git@github.com:gugsguga844/Daily-Contabil.git
+$ cd Daily-Contabil
 ```
 
 #### Define the env variables
