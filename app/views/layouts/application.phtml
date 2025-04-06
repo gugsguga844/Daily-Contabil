@@ -101,8 +101,11 @@
                             <i class="fa-regular fa-user fa-lg"></i>
                         </button>
                         <div class="dropdown-content absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white py-1 text-sm text-gray-700 z-10">
-                            <a href="/perfil" class="block px-4 py-2 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="<?= route('profile.show') ?>" class="block px-4 py-2 hover:bg-gray-100">Meu Perfil</a>
                             <a href="/configuracoes" class="block px-4 py-2 hover:bg-gray-100">Configurações</a>
+                            <?php if ($_SESSION['role'] === 'admin'): ?>
+                                <a class="block px-4 py-2 hover:bg-gray-100" href="<?= route('users.index') ?>">Usuários Cadastrados</a>
+                            <?php endif; ?>
                             <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Sair</a>
                         </div>
                     </div>
@@ -111,9 +114,9 @@
                             <i class="fa-solid fa-gear fa-lg"></i>
                         </button>
                         <div class="dropdown-content absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white py-1 text-sm text-gray-700 z-10">
-                            <a href="/perfil" class="block px-4 py-2 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="" class="block px-4 py-2 hover:bg-gray-100">Meu Perfil</a>
                             <a href="/configuracoes" class="block px-4 py-2 hover:bg-gray-100">Configurações</a>
-                            <a href="/logout" class="block px-4 py-2 hover:bg-gray-100">Sair</a>
+                            <a href="<?= route('users.logout') ?>" class="block px-4 py-2 hover:bg-gray-100">Sair</a>
                         </div>
                     </div>
                 </div>

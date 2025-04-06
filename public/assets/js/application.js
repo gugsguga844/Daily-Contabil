@@ -17,14 +17,30 @@ const configDropdown = document.getElementById("configDropdown");
 
 userDropdown.querySelector("button").addEventListener("click", (e) => {
   e.stopPropagation();
-  userDropdown.querySelector(".dropdown-content").classList.toggle("show");
-  tutoriaisDropdown.querySelector(".dropdown-content").classList.remove("show");
+  const configContent = configDropdown.querySelector(".dropdown-content");
+  const userContent = userDropdown.querySelector(".dropdown-content");
+  
+  // Fecha o dropdown de configurações se estiver aberto
+  if (configContent.classList.contains("show")) {
+    configContent.classList.remove("show");
+  }
+  
+  // Toggle do dropdown do usuário
+  userContent.classList.toggle("show");
 });
 
 configDropdown.querySelector("button").addEventListener("click", (e) => {
   e.stopPropagation();
-  configDropdown.querySelector(".dropdown-content").classList.toggle("show");
-  tutoriaisDropdown.querySelector(".dropdown-content").classList.remove("show");
+  const configContent = configDropdown.querySelector(".dropdown-content");
+  const userContent = userDropdown.querySelector(".dropdown-content");
+  
+  // Fecha o dropdown do usuário se estiver aberto
+  if (userContent.classList.contains("show")) {
+    userContent.classList.remove("show");
+  }
+  
+  // Toggle do dropdown de configurações
+  configContent.classList.toggle("show");
 });
 
 // Close dropdowns when clicking outside
