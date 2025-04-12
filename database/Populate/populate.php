@@ -8,6 +8,7 @@ use Database\Populate\SubCategoriesPopulate;
 use Database\Populate\TagsPopulate;
 use Database\Populate\TutorialsPopulate;
 use Database\Populate\UsersPopulate;
+use Database\Populate\CompaniesPopulate;
 
 Database::migrate();
 
@@ -16,3 +17,4 @@ CategoriesPopulate::populate();
 SubCategoriesPopulate::populate();
 TutorialsPopulate::populate();
 TagsPopulate::populate();
+CompaniesPopulate::populate();

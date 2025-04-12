@@ -4,6 +4,7 @@ use App\Controllers\HomeController;
 use Core\Router\Route;
 use App\Controllers\AuthenticationsController;
 use App\Controllers\CategoriesController;
+use App\Controllers\CompaniesController;
 use App\Controllers\ProfileController;
 use App\Controllers\SubCategoriesController;
 use App\Controllers\TagTutorialFilterController;
@@ -28,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
     Route::post('/profile/avatar/remove', [ProfileController::class, 'removeAvatar'])->name('profile.remove');
+
+    // Companies
+    Route::get('/companies', [CompaniesController::class, 'index'])->name('companies.index');
+    Route::get('/companies/{id}', [CompaniesController::class, 'show'])->name('companies.show');
+    Route::get('/companies/new', [CompaniesController::class, 'new'])->name('companies.new');
+    Route::post('/companies', [CompaniesController::class, 'create'])->name('companies.create');
 
     // Categories
     Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
