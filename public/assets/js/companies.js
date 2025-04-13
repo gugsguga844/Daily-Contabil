@@ -101,6 +101,9 @@ adicionarSocioBtn.addEventListener("click", () => {
   const inputs = novoSocio.querySelectorAll("input");
   inputs.forEach((input) => {
     input.value = "";
+    // Manter o mesmo nome do campo para que o PHP possa processar como array
+    const name = input.getAttribute("name");
+    input.setAttribute("name", name);
   });
 
   // Adicionar evento para remover o sócio
@@ -129,19 +132,6 @@ removerBtns.forEach((btn) => {
       alert("É necessário pelo menos um sócio.");
     }
   });
-});
-
-// Validação do formulário
-const empresaForm = document.getElementById("empresaForm");
-empresaForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  // Aqui você pode adicionar validações específicas
-  // Por exemplo, validar o formato do CNPJ
-
-  // Simulação de envio bem-sucedido
-  alert("Empresa cadastrada com sucesso!");
-  window.location.href = "/empresas.html";
 });
 
 // Máscaras para campos
@@ -184,3 +174,29 @@ telefoneInput.addEventListener("input", function (e) {
 const dataCadastroInput = document.getElementById("data-cadastro");
 const dataAtual = new Date().toISOString().split("T")[0];
 dataCadastroInput.value = dataAtual;
+
+const excluirEmpresaBtn = document.getElementById("excluir-empresa");
+const modalExcluir = document.getElementById("modal-excluir");
+const cancelarExclusaoBtn = document.getElementById("cancelar-exclusao");
+const confirmarExclusaoBtn = document.getElementById("confirmar-exclusao");
+
+excluirEmpresaBtn.addEventListener("click", () => {
+  modalExcluir.classList.remove("hidden");
+});
+
+cancelarExclusaoBtn.addEventListener("click", () => {
+  modalExcluir.classList.add("hidden");
+});
+
+confirmarExclusaoBtn.addEventListener("click", () => {
+  // Simulação de exclusão
+  alert("Empresa excluída com sucesso!");
+  window.location.href = "/empresas.html";
+});
+
+// Fechar modal ao clicar fora
+modalExcluir.addEventListener("click", (e) => {
+  if (e.target === modalExcluir) {
+    modalExcluir.classList.add("hidden");
+  }
+});

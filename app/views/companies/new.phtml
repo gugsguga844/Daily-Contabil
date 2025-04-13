@@ -18,7 +18,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-400">
                   <path d="m9 18 6-6-6-6"></path>
                 </svg>
-                <a href="/empresas.html" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Empresas</a>
+                <a href="<?= route('companies.index') ?>" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Empresas</a>
               </div>
             </li>
             <li aria-current="page">
@@ -48,7 +48,7 @@
 
 <!-- Formulário de Cadastro -->
 <div class="container mx-auto px-4 py-8">
-  <form id="empresaForm" class="bg-white shadow-sm rounded-lg overflow-hidden">
+  <form action="<?= route('companies.create') ?>" method="POST" id="empresaForm" class="bg-white shadow-sm rounded-lg overflow-hidden">
     <!-- Abas de Navegação -->
     <div class="border-b">
       <nav class="flex overflow-x-auto" aria-label="Tabs">
@@ -77,17 +77,20 @@
             <label for="razao-social" class="block text-sm font-medium text-gray-700 mb-1 required-field">
               Razão Social
             </label>
-            <input type="text" id="razao-social" name="razao-social" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+            <input type="text" id="razao-social" name="company[name]" required
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->name ?>"
+              autofocus>
           </div>
 
           <!-- Nome Fantasia -->
           <div>
-            <label for="nome-fantasia" class="block text-sm font-medium text-gray-700 mb-1 required-field">
+            <label for="nome-fantasia" class="block text-sm font-medium text-gray-700 mb-1">
               Nome Fantasia
             </label>
-            <input type="text" id="nome-fantasia" name="nome-fantasia" required
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+            <input type="text" id="nome-fantasia" name="company[fantasy_name]"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->fantasy_name ?>">
           </div>
 
           <!-- CNPJ -->
@@ -95,9 +98,9 @@
             <label for="cnpj" class="block text-sm font-medium text-gray-700 mb-1 required-field">
               CNPJ
             </label>
-            <input type="text" id="cnpj" name="cnpj" required placeholder="00.000.000/0000-00"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
-            <p class="mt-1 text-xs text-gray-500">Formato: 00.000.000/0000-00</p>
+            <input type="text" id="cnpj" name="company[cnpj]" required placeholder="00.000.000/0000-00"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->cnpj ?>">
           </div>
 
           <!-- Telefone -->
@@ -105,8 +108,9 @@
             <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">
               Telefone
             </label>
-            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000"
-              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+            <input type="tel" id="telefone" name="company[phone]" placeholder="(00) 00000-0000"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->phone ?>">
           </div>
 
           <!-- Regime Tributário -->
@@ -114,22 +118,22 @@
             <label for="regime" class="block text-sm font-medium text-gray-700 mb-1 required-field">
               Regime Tributário
             </label>
-            <select id="regime" name="regime" required
+            <select id="regime" name="company[tax_framework]"
               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               <option value="">Selecione um regime</option>
-              <option value="simples">Simples Nacional</option>
-              <option value="presumido">Lucro Presumido</option>
-              <option value="real">Lucro Real</option>
-              <option value="mei">MEI</option>
+              <option value="Simples Nacional">Simples Nacional</option>
+              <option value="Lucro Presumido">Lucro Presumido</option>
+              <option value="Lucro Real">Lucro Real</option>
+              <option value="MEI">MEI</option>
             </select>
           </div>
 
           <!-- Contador Responsável -->
-          <div>
-            <label for="contador" class="block text-sm font-medium text-gray-700 mb-1 required-field">
+          <!-- <div>
+            <label for="contador" class="block text-sm font-medium text-gray-700 mb-1">
               Contador Responsável
             </label>
-            <select id="contador" name="contador" required
+            <select id="contador" name="contador"
               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               <option value="">Selecione um contador</option>
               <option value="1">Ana Silva</option>
@@ -137,6 +141,36 @@
               <option value="3">Mariana Santos</option>
               <option value="4">Roberto Almeida</option>
             </select>
+          </div> -->
+
+          <div>
+            <label for="razao-social" class="block text-sm font-medium text-gray-700 mb-1">
+              Contador Responsável
+            </label>
+            <input type="text" id="razao-social" name="company[responsible]"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->responsible ?>"
+              autofocus>
+          </div>
+
+          <div>
+            <label for="razao-social" class="block text-sm font-medium text-gray-700 mb-1">
+              Inscrição Estadual
+            </label>
+            <input type="text" id="razao-social" name="company[state_registration]"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->state_registration ?>"
+              autofocus>
+          </div>
+
+          <div>
+            <label for="razao-social" class="block text-sm font-medium text-gray-700 mb-1">
+              Honorário Contábil
+            </label>
+            <input type="text" id="razao-social" name="company[accounting_fees]"
+              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+              value="<?= $company->accounting_fees ?>"
+              autofocus>
           </div>
 
           <!-- Status -->
@@ -144,10 +178,11 @@
             <label for="status" class="block text-sm font-medium text-gray-700 mb-1 required-field">
               Status
             </label>
-            <select id="status" name="status" required
+            <select id="status" name="company[status]" required
               class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
-              <option value="ativo">Ativo</option>
-              <option value="inativo">Inativo</option>
+              <option value="Ativo">Ativo</option>
+              <option value="Inativo">Inativo</option>
+              <option value="Baixado">Baixado</option>
             </select>
           </div>
 
@@ -166,9 +201,9 @@
           <label for="descricao" class="block text-sm font-medium text-gray-700 mb-1">
             Descrição
           </label>
-          <textarea id="descricao" name="descricao" rows="4"
+          <textarea id="descricao" name="company[description]" rows="4"
             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
-            placeholder="Descreva informações relevantes sobre a empresa..."></textarea>
+            placeholder="Descreva informações relevantes sobre a empresa..."><?= $company->description ?></textarea>
         </div>
 
         <!-- Link do Vídeo -->
@@ -176,7 +211,8 @@
           <label for="link-video" class="block text-sm font-medium text-gray-700 mb-1">
             Link do Vídeo de Apresentação
           </label>
-          <input type="url" id="link-video" name="link-video" placeholder="https://www.youtube.com/watch?v=..."
+          <input type="url" id="link-video" name="company[link]" placeholder="https://www.youtube.com/embed/..."
+            value="<?= $company->link ?>"
             class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
           <p class="mt-1 text-xs text-gray-500">Cole o link do YouTube ou Vimeo</p>
         </div>
@@ -213,28 +249,55 @@
                 <label class="block text-sm font-medium text-gray-700 mb-1 required-field">
                   Nome Completo
                 </label>
-                <input type="text" name="socio-nome[]" required
+                <input type="text" name="associates[name][]"
                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1 required-field">
                   CPF
                 </label>
-                <input type="text" name="socio-cpf[]" required placeholder="000.000.000-00"
+                <input type="text" name="associates[cpf][]" placeholder="000.000.000-00"
                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
                   Participação (%)
                 </label>
-                <input type="number" name="socio-participacao[]" min="0" max="100" step="0.01"
+                <input type="number" name="associates[participation][]" min="0" max="100" step="0.01"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+              </div>
+
+              <div>
+                <label for="status" class="block text-sm font-medium text-gray-700 mb-1 required-field">
+                  Qualificação
+                </label>
+                <select id="qualification" name="associates[qualification][]"
+                  class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                  <option value="Sócio Administrador">Sócio Administrador</option>
+                  <option value="Sócio Administrador">Sócio</option>
+                  <option value="Presidente">Presidente</option>
+                  <option value="Gestor Judicial">Gestor Judicial</option>
+                  <option value="Procurador">Procurador</option>
+                  <option value="Inventariante">Inventariante</option>
+                  <option value="Liquidante">Liquidante</option>
+                  <option value="Titular Pessoa Física">Titular Pessoa Física</option>
+                  <option value="Empresário">Empresário</option>
+                  <option value="Contabilista">Contabilista</option>
+                  <option value="Outros">Outros</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">
+                  Telefone
+                </label>
+                <input type="text" name="associates[phone][]"
                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">
-                  Cargo
+                  Email
                 </label>
-                <input type="text" name="socio-cargo[]"
+                <input type="email" name="associates[email][]"
                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               </div>
             </div>
@@ -257,7 +320,7 @@
               <label for="data-contabilidade" class="block text-sm font-medium text-gray-700 mb-1 required-field">
                 Contabilidade Lançada até
               </label>
-              <input type="month" id="data-contabilidade" name="data-contabilidade" required
+              <input type="month" id="data-contabilidade" name="data-contabilidade"
                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
               <p class="mt-1 text-xs text-gray-500">Selecione o mês/ano até quando a contabilidade está lançada</p>
             </div>
@@ -424,7 +487,7 @@
 
     <!-- Botões de Ação -->
     <div class="bg-gray-50 px-6 py-4 flex items-center justify-end space-x-3 border-t">
-      <button type="button" onclick="window.location.href='/empresas.html'" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+      <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
         Cancelar
       </button>
       <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">

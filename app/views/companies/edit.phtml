@@ -1,0 +1,698 @@
+<div class="bg-gradient-to-r from-primary/10 to-primary/5 py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+            <div>
+                <nav class="flex mb-3" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="/" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2">
+                                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                Início
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-400">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                                <a href="/empresas.html" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Empresas</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-400">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                                <a href="/empresa-detalhes.html" class="ml-1 text-sm font-medium text-gray-700 hover:text-primary md:ml-2">Empresa ABC Ltda</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-400">
+                                    <path d="m9 18 6-6-6-6"></path>
+                                </svg>
+                                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Editar</span>
+                            </div>
+                        </li>
+                    </ol>
+                </nav>
+                <h1 class="text-3xl font-bold mb-2 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary mr-2">
+                        <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path>
+                        <path d="m15 5 4 4"></path>
+                    </svg>
+                    Editar Empresa
+                </h1>
+                <p class="text-gray-600 max-w-2xl">
+                    Atualize os dados da empresa conforme necessário. Os campos marcados com asterisco (*) são obrigatórios.
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                    Ativo desde 10/01/2010
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Formulário de Edição -->
+<div class="container mx-auto px-4 py-8">
+    <form action="<?= route('companies.update', ['id' => $company->id]) ?>" method="POST" id="empresaForm" class="bg-white shadow-sm rounded-lg overflow-hidden">
+        <!-- Abas de Navegação -->
+        <input type="hidden" name="_method" value="PUT">
+        <div class="border-b">
+            <nav class="flex overflow-x-auto" aria-label="Tabs">
+                <button type="button" class="tab-button text-primary border-b-2 border-primary px-4 py-4 text-sm font-medium" aria-current="page" data-tab="dados-gerais">
+                    Dados Gerais
+                </button>
+                <button type="button" class="tab-button text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium border-b-2 border-transparent" data-tab="socios">
+                    Sócios
+                </button>
+                <button type="button" class="tab-button text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium border-b-2 border-transparent" data-tab="contabilidade">
+                    Contabilidade
+                </button>
+                <button type="button" class="tab-button text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium border-b-2 border-transparent" data-tab="documentos">
+                    Documentos
+                </button>
+                <button type="button" class="tab-button text-gray-500 hover:text-gray-700 hover:border-gray-300 px-4 py-4 text-sm font-medium border-b-2 border-transparent" data-tab="historico">
+                    Histórico
+                </button>
+            </nav>
+        </div>
+
+        <!-- Conteúdo das Abas -->
+        <div class="p-6">
+            <!-- Aba: Dados Gerais -->
+            <div class="tab-content" id="dados-gerais">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Razão Social -->
+                    <div>
+                        <label for="razao-social" class="block text-sm font-medium text-gray-700 mb-1 ">
+                            Razão Social
+                        </label>
+                        <input type="text" id="razao-social" name="company[name]" value="<?= $company->name ?>"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- Nome Fantasia -->
+                    <div>
+                        <label for="nome-fantasia" class="block text-sm font-medium text-gray-700 mb-1 ">
+                            Nome Fantasia
+                        </label>
+                        <input type="text" id="nome-fantasia" name="company[fantasy_name]" value="<?= $company->fantasy_name ?>"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- CNPJ -->
+                    <div>
+                        <label for="cnpj" class="block text-sm font-medium text-gray-700 mb-1 ">
+                            CNPJ
+                        </label>
+                        <input type="text" id="cnpj" name="company[cnpj]" value="<?= $company->cnpj ?>" placeholder="00.000.000/0000-00"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                        <p class="mt-1 text-xs text-gray-500">Formato: 00.000.000/0000-00</p>
+                    </div>
+
+                    <!-- Telefone -->
+                    <div>
+                        <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">
+                            Telefone
+                        </label>
+                        <input type="tel" id="telefone" name="company[phone]" value="<?= $company->phone ?>" placeholder="(00) 00000-0000"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                    </div>
+
+                    <!-- Regime Tributário -->
+                    <div>
+                        <label for="regime" class="block text-sm font-medium text-gray-700 mb-1 c">
+                            Regime Tributário
+                        </label>
+                        <select id="regime" name="company[tax_framework]"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            <option value="">Selecione um regime</option>
+                            <option value="Simples Nacional" <?= $company->tax_framework == 'Simples Nacional' ? 'selected' : '' ?>>Simples Nacional</option>
+                            <option value="Lucro Presumido" <?= $company->tax_framework == 'Lucro Presumido' ? 'selected' : '' ?>>Lucro Presumido</option>
+                            <option value="Lucro Real" <?= $company->tax_framework == 'Lucro Real' ? 'selected' : '' ?>>Lucro Real</option>
+                            <option value="MEI" <?= $company->tax_framework == 'MEI' ? 'selected' : '' ?>>MEI</option>
+                        </select>
+                    </div>
+
+                    <!-- Contador Responsável -->
+                    <div>
+                        <label for="contador" class="block text-sm font-medium text-gray-700 mb-1 ">
+                            Contador Responsável
+                        </label>
+                        <select id="contador" name="company[responsible]"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            <option value="">Selecione um contador</option>
+                            <option value="1" selected>Adrieli</option>
+                            <option value="2">Damaris</option>
+                            <option value="3">Kauan</option>
+                        </select>
+                    </div>
+
+                    <!-- Status -->
+                    <div>
+                        <label for="status" class="block text-sm font-medium text-gray-700 mb-1 ">
+                            Status
+                        </label>
+                        <select id="status" name="company[status]"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            <option value="Ativo" selected>Ativo</option>
+                            <option value="Inativo">Inativo</option>
+                        </select>
+                    </div>
+
+                    <!-- Data de Cadastro -->
+                    <div>
+                        <label for="data-cadastro" class="block text-sm font-medium text-gray-700 mb-1">
+                            Data de Cadastro
+                        </label>
+                        <input type="date" id="data-cadastro" name="company[recorded_at]" value="<?= $company->recorded_at ?>" readonly
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-50 text-gray-500 cursor-not-allowed">
+                        <p class="mt-1 text-xs text-gray-500">A data de cadastro não pode ser alterada</p>
+                    </div>
+                </div>
+
+                <!-- Descrição -->
+                <div class="mt-6">
+                    <label for="descricao" class="block text-sm font-medium text-gray-700 mb-1">
+                        Descrição
+                    </label>
+                    <textarea id="descricao" name="company[description]" rows="4"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                        placeholder="Descreva informações relevantes sobre a empresa..."><?= $company->description ?></textarea>
+                </div>
+
+                <!-- Link do Vídeo -->
+                <div class="mt-6">
+                    <label for="link-video" class="block text-sm font-medium text-gray-700 mb-1">
+                        Link do Vídeo de Apresentação
+                    </label>
+                    <input type="url" id="link-video" name="company[link]" value="<?= $company->link ?>" placeholder="https://www.youtube.com/watch?v=..."
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                    <p class="mt-1 text-xs text-gray-500">Cole o link do YouTube ou Vimeo</p>
+                </div>
+            </div>
+
+            <!-- Aba: Sócios -->
+            <div class="tab-content hidden" id="socios">
+                <div class="mb-6 flex justify-between items-center">
+                    <h3 class="text-lg font-medium text-gray-900">Lista de Sócios</h3>
+                    <button type="button" id="adicionar-socio" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-primary hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-1">
+                            <path d="M12 5v14"></path>
+                            <path d="M5 12h14"></path>
+                        </svg>
+                        Adicionar Sócio
+                    </button>
+                </div>
+
+                <div id="socios-container">
+                    <?php foreach ($company->associates as $associate) : ?>
+                        <!-- Sócio 1 -->
+                        <div class="socio-item bg-gray-50 p-4 rounded-md mb-4">
+                            <div class="flex justify-between mb-3">
+                                <h4 class="font-medium text-gray-700">Sócio 1</h4>
+                                <button type="button" class="remover-socio text-red-600 hover:text-red-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                        <path d="M3 6h18"></path>
+                                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1 ">
+                                        Nome Completo
+                                    </label>
+                                    <input type="text" name="associates[name][]" value="<?= $associate->name ?>"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1 ">
+                                        CPF
+                                    </label>
+                                    <input type="text" name="associates[cpf][]" value="<?= $associate->cpf ?>" placeholder="000.000.000-00"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                                        Participação (%)
+                                    </label>
+                                    <input type="number" name="associates[participation][]" min="0" max="100" step="0.01" value="<?= $associate->participation ?>"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                                        Cargo
+                                    </label>
+                                    <input type="text" name="associates[qualification][]" value="<?= $associate->qualification ?>"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                                        Telefone
+                                    </label>
+                                    <input type="text" name="associates[phone][]" value="<?= $associate->phone ?>"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">
+                                        Email
+                                    </label>
+                                    <input type="email" name="associates[email][]" value="<?= $associate->email ?>"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+                <p class="text-sm text-gray-500 mt-2">
+                    Adicione todos os sócios da empresa. É necessário pelo menos um sócio.
+                </p>
+            </div>
+
+            <!-- Aba: Contabilidade -->
+            <div class="tab-content hidden" id="contabilidade">
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Informações Contábeis</h3>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Data da Última Contabilidade Lançada -->
+                        <div>
+                            <label for="data-contabilidade" class="block text-sm font-medium text-gray-700 mb-1 ">
+                                Contabilidade Lançada até
+                            </label>
+                            <input type="month" id="data-contabilidade" name="data-contabilidade" value="2025-03"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                            <p class="mt-1 text-xs text-gray-500">Selecione o mês/ano até quando a contabilidade está lançada</p>
+                        </div>
+
+                        <!-- Próxima Obrigação -->
+                        <div>
+                            <label for="proxima-obrigacao" class="block text-sm font-medium text-gray-700 mb-1">
+                                Próxima Obrigação
+                            </label>
+                            <select id="proxima-obrigacao" name="proxima-obrigacao"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <option value="">Selecione uma obrigação</option>
+                                <option value="dctf" selected>DCTF</option>
+                                <option value="efd-contribuicoes">EFD Contribuições</option>
+                                <option value="efd-reinf">EFD-Reinf</option>
+                                <option value="esocial">eSocial</option>
+                                <option value="sped-fiscal">SPED Fiscal</option>
+                            </select>
+                        </div>
+
+                        <!-- Data de Vencimento -->
+                        <div>
+                            <label for="data-vencimento" class="block text-sm font-medium text-gray-700 mb-1">
+                                Data de Vencimento
+                            </label>
+                            <input type="date" id="data-vencimento" name="data-vencimento" value="2025-04-15"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                        </div>
+
+                        <!-- Responsável pela Obrigação -->
+                        <div>
+                            <label for="responsavel-obrigacao" class="block text-sm font-medium text-gray-700 mb-1">
+                                Responsável pela Obrigação
+                            </label>
+                            <select id="responsavel-obrigacao" name="responsavel-obrigacao"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary">
+                                <option value="">Selecione um responsável</option>
+                                <option value="1" selected>Ana Silva</option>
+                                <option value="2">Carlos Oliveira</option>
+                                <option value="3">Mariana Santos</option>
+                                <option value="4">Roberto Almeida</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Observações Contábeis -->
+                    <div class="mt-6">
+                        <label for="observacoes-contabeis" class="block text-sm font-medium text-gray-700 mb-1">
+                            Observações Contábeis
+                        </label>
+                        <textarea id="observacoes-contabeis" name="observacoes-contabeis" rows="3"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary"
+                            placeholder="Informações adicionais sobre a contabilidade da empresa...">Empresa com boa organização contábil. Documentos são entregues regularmente e dentro dos prazos. Pendências atuais relacionadas à ECD e EFD Contribuições.</textarea>
+                    </div>
+
+                    <!-- Pendências Contábeis -->
+                    <div class="mt-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">
+                            Pendências Contábeis
+                        </label>
+                        <div class="space-y-2">
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="pendencia-1" name="pendencias[]" type="checkbox" value="extratos"
+                                        class="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="pendencia-1" class="font-medium text-gray-700">Extratos bancários</label>
+                                    <p class="text-gray-500">Extratos bancários do último trimestre</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="pendencia-2" name="pendencias[]" type="checkbox" value="notas" checked
+                                        class="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="pendencia-2" class="font-medium text-gray-700">Notas fiscais</label>
+                                    <p class="text-gray-500">Notas fiscais de entrada e saída</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="pendencia-3" name="pendencias[]" type="checkbox" value="folha"
+                                        class="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="pendencia-3" class="font-medium text-gray-700">Folha de pagamento</label>
+                                    <p class="text-gray-500">Documentos da folha de pagamento</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="pendencia-4" name="pendencias[]" type="checkbox" value="impostos" checked
+                                        class="h-4 w-4 text-primary border-gray-300 rounded focus:ring-primary">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="pendencia-4" class="font-medium text-gray-700">Guias de impostos</label>
+                                    <p class="text-gray-500">Comprovantes de pagamento de impostos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba: Documentos -->
+            <div class="tab-content hidden" id="documentos">
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Documentos da Empresa</h3>
+
+                    <div class="space-y-6">
+                        <!-- Contrato Social -->
+                        <div>
+                            <label for="contrato-social" class="block text-sm font-medium text-gray-700 mb-1">
+                                Contrato Social
+                            </label>
+                            <div class="mt-1 flex items-center">
+                                <div class="flex-1 bg-gray-50 p-2 rounded-md border border-gray-300 flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-2">
+                                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                        <span>contrato-social-abc.pdf</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-primary hover:text-primary-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <button type="button" class="text-red-500 hover:text-red-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <input type="file" id="contrato-social" name="contrato-social" accept=".pdf,.doc,.docx"
+                                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary hover:file:bg-primary-100">
+                                <p class="mt-1 text-xs text-gray-500">Substitua o arquivo existente ou adicione uma nova versão</p>
+                            </div>
+                        </div>
+
+                        <!-- Cartão CNPJ -->
+                        <div>
+                            <label for="cartao-cnpj" class="block text-sm font-medium text-gray-700 mb-1">
+                                Cartão CNPJ
+                            </label>
+                            <div class="mt-1 flex items-center">
+                                <div class="flex-1 bg-gray-50 p-2 rounded-md border border-gray-300 flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-2">
+                                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                        <span>cartao-cnpj-abc.pdf</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-primary hover:text-primary-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <button type="button" class="text-red-500 hover:text-red-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <input type="file" id="cartao-cnpj" name="cartao-cnpj" accept=".pdf,.jpg,.png"
+                                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary hover:file:bg-primary-100">
+                            </div>
+                        </div>
+
+                        <!-- Documentos dos Sócios -->
+                        <div>
+                            <label for="documentos-socios" class="block text-sm font-medium text-gray-700 mb-1">
+                                Documentos dos Sócios (RG/CPF)
+                            </label>
+                            <div class="mt-1 space-y-2">
+                                <div class="flex-1 bg-gray-50 p-2 rounded-md border border-gray-300 flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-2">
+                                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                        <span>documentos-joao.pdf</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-primary hover:text-primary-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <button type="button" class="text-red-500 hover:text-red-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="flex-1 bg-gray-50 p-2 rounded-md border border-gray-300 flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-2">
+                                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                        <span>documentos-maria.pdf</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-primary hover:text-primary-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <button type="button" class="text-red-500 hover:text-red-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <input type="file" id="documentos-socios" name="documentos-socios" accept=".pdf,.jpg,.png" multiple
+                                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary hover:file:bg-primary-100">
+                            </div>
+                        </div>
+
+                        <!-- Outros Documentos -->
+                        <div>
+                            <label for="outros-documentos" class="block text-sm font-medium text-gray-700 mb-1">
+                                Outros Documentos
+                            </label>
+                            <div class="mt-1 space-y-2">
+                                <div class="flex-1 bg-gray-50 p-2 rounded-md border border-gray-300 flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 text-primary mr-2">
+                                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                            <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                        <span>alvara-funcionamento.pdf</span>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="#" class="text-primary hover:text-primary-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                                <polyline points="7 10 12 15 17 10"></polyline>
+                                                <line x1="12" x2="12" y1="15" y2="3"></line>
+                                            </svg>
+                                        </a>
+                                        <button type="button" class="text-red-500 hover:text-red-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                                <path d="M3 6h18"></path>
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <input type="file" id="outros-documentos" name="outros-documentos" multiple
+                                    class="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-primary-50 file:text-primary hover:file:bg-primary-100">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Aba: Histórico -->
+            <div class="tab-content hidden" id="historico">
+                <div class="mb-6">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">Histórico de Alterações</h3>
+
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-primary pl-4 py-2">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="font-medium">Atualização de Contabilidade</p>
+                                    <p class="text-sm text-gray-500">Contabilidade lançada até Março/2025</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium">Ana Silva</p>
+                                    <p class="text-xs text-gray-500">15/03/2025 às 14:30</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-primary pl-4 py-2">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="font-medium">Adição de Documento</p>
+                                    <p class="text-sm text-gray-500">Alvará de funcionamento adicionado</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium">Carlos Oliveira</p>
+                                    <p class="text-xs text-gray-500">10/02/2025 às 09:15</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-primary pl-4 py-2">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="font-medium">Alteração de Regime Tributário</p>
+                                    <p class="text-sm text-gray-500">De Simples Nacional para Lucro Presumido</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium">Ana Silva</p>
+                                    <p class="text-xs text-gray-500">05/01/2025 às 11:45</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-l-4 border-primary pl-4 py-2">
+                            <div class="flex justify-between">
+                                <div>
+                                    <p class="font-medium">Cadastro da Empresa</p>
+                                    <p class="text-sm text-gray-500">Empresa cadastrada no sistema</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-sm font-medium">Roberto Almeida</p>
+                                    <p class="text-xs text-gray-500">10/01/2010 às 10:00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <p class="text-sm text-gray-500">
+                            O histórico mostra as principais alterações realizadas na empresa. Todas as alterações são registradas com data, hora e usuário responsável.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botões de Ação -->
+        <div class="bg-gray-50 px-6 py-4 flex items-center justify-between border-t">
+            <div>
+                <button type="button" id="excluir-empresa" class="inline-flex items-center px-4 py-2 border border-red-300 rounded-md shadow-sm text-sm font-medium text-red-700 bg-white hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 mr-2">
+                        <path d="M3 6h18"></path>
+                        <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                        <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                    </svg>
+                    Excluir Empresa
+                </button>
+            </div>
+            <div class="flex space-x-3">
+                <button type="button" onclick="window.location.href='/empresa-detalhes.html'" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    Cancelar
+                </button>
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                    Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="modal-excluir" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg max-w-md w-full p-6">
+        <div class="text-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-12 w-12 text-red-500 mx-auto mb-4">
+                <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" x2="12" y1="9" y2="13"></line>
+                <line x1="12" x2="12.01" y1="17" y2="17"></line>
+            </svg>
+            <h3 class="text-lg font-medium text-gray-900">Confirmar Exclusão</h3>
+            <p class="text-gray-500 mt-2">
+                Tem certeza que deseja excluir a empresa "Empresa ABC Ltda"? Esta ação não pode ser desfeita.
+            </p>
+        </div>
+        <div class="flex justify-end space-x-3">
+            <button type="button" id="cancelar-exclusao" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                Cancelar
+            </button>
+            <button type="button" id="confirmar-exclusao" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Excluir
+            </button>
+        </div>
+    </div>
+</div>

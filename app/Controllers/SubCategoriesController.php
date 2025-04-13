@@ -15,7 +15,24 @@ class SubCategoriesController extends Controller
         $categoryId = $request->getParam('category_id');
         $category = Category::findById($categoryId);
 
-        $subcategories = $category->subcategories;
+        $pdo = \Core\Database\Database::getDatabaseConn();
+        $attributes = implode(', ', SubCategory::columns());
+        $sql = <<<SQL
+            SELECT id, {$attributes} 
+            FROM subcategories 
+            WHERE category_id = :category_id
+            ORDER BY name ASC
+        SQL;
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':category_id', $categoryId);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        $subcategories = [];
+        foreach ($rows as $row) {
+            $subcategories[] = new SubCategory($row);
+        }
 
         if ($request->acceptJson()) {
             $this->renderJson('subcategories/index', compact('subcategories', 'category'));

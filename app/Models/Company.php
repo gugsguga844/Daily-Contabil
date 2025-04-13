@@ -19,12 +19,13 @@ use Core\Database\ActiveRecord\Model;
  * @property string $status
  * @property string $accounting_fees
  * @property string $state_registration
+ * @property string $recorded_at
  */
 
 class Company extends Model
 {
     protected static string $table = 'companies';
-    protected static array $columns = ['name', 'fantasy_name', 'cnpj', 'phone', 'tax_framework', 'description', 'link', 'responsible', 'status', 'accounting_fees', 'state_registration'];
+    protected static array $columns = ['name', 'fantasy_name', 'cnpj', 'phone', 'tax_framework', 'description', 'link', 'responsible', 'status', 'accounting_fees', 'state_registration', 'recorded_at'];
 
     public function associates(): HasMany
     {
@@ -39,5 +40,17 @@ class Company extends Model
     public static function findById(int $id): ?static
     {
         return Company::findBy(['id' => $id]);
+    }
+
+    public function delete(): bool
+    {
+        // Primeiro, excluir todos os sócios associados
+        $associates = $this->associates()->get();
+        foreach ($associates as $associate) {
+            $associate->destroy();
+        }
+
+        // Depois, excluir a empresa
+        return $this->destroy();
     }
 }

@@ -9,10 +9,10 @@ class UsersPopulate
     public static function populate()
     {
         $data =  [
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => '123456',
-            'password_confirmation' => '123456',
+            'name' => 'Escritório Polly',
+            'email' => 'escritoriopolly@gmail.com',
+            'password' => 'Polly1711',
+            'password_confirmation' => 'Polly1711',
             'role' => 'admin'
         ];
     
