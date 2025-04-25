@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Middleware\Authenticate;
+use App\Middleware\VerifyCsrfToken;
+
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Tag;
@@ -13,6 +16,13 @@ use Lib\FlashMessage;
 
 class TagTutorialFilterController extends Controller
 {
+    public function __construct()
+    {
+        $request = new \Core\Http\Request();
+        (new Authenticate())->handle($request);
+        (new VerifyCsrfToken())->handle($request);
+    }
+
     public function destroy(Request $request): void
     {
         $params = $request->getParams();

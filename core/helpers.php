@@ -10,6 +10,14 @@ if (!function_exists('d')) {
     }
 }
 
+if (!function_exists('csrf_field')) {
+    function csrf_field(): string
+    {
+        $token = \Lib\Security\Csrf::generateToken();
+        return '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($token, ENT_QUOTES, 'UTF-8') . '">';
+    }
+}
+
 if (!function_exists('route')) {
     /**
      * @param string $name

@@ -8,8 +8,17 @@ use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\FlashMessage;
 
+use App\Middleware\Authenticate;
+use App\Middleware\AuthorizeAdmin;
+
 class CompaniesController extends Controller
 {
+    public function __construct()
+    {
+        $request = new \Core\Http\Request();
+        (new Authenticate())->handle($request);
+    }
+
   public function index(Request $request): void
   {
     $pdo = \Core\Database\Database::getDatabaseConn();
@@ -59,6 +68,7 @@ class CompaniesController extends Controller
 
   public function new(Request $request): void
   {
+    (new \App\Middleware\AuthorizeAdmin())->handle($request);
     $company = new Company();
     $associates = Associate::all();
 
@@ -67,6 +77,7 @@ class CompaniesController extends Controller
 
   public function create(Request $request): void
   {
+    (new \App\Middleware\AuthorizeAdmin())->handle($request);
     $params = $request->getParams();
     $company = new Company($params['company']);
 
@@ -102,6 +113,7 @@ class CompaniesController extends Controller
 
   public function edit(Request $request): void
   {
+    (new \App\Middleware\AuthorizeAdmin())->handle($request);
     $params = $request->getParams();
     $company = Company::findById($params['id']);
 
@@ -110,6 +122,7 @@ class CompaniesController extends Controller
 
   public function update(Request $request): void
   {
+    (new \App\Middleware\AuthorizeAdmin())->handle($request);
     $id = $request->getParam('id');
     $params = $request->getParam('company');
 
@@ -139,6 +152,7 @@ class CompaniesController extends Controller
 
   public function destroy(Request $request): void
   {
+    (new \App\Middleware\AuthorizeAdmin())->handle($request);
     $params = $request->getParams();
     $id = (int) $params['id'];
     $company = Company::findById($id);

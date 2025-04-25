@@ -7,9 +7,16 @@ use App\Models\Associate;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\FlashMessage;
+use App\Middleware\Authenticate;
 
 class AssociatesController extends Controller
 {
+    public function __construct()
+    {
+        $request = new \Core\Http\Request();
+        (new Authenticate())->handle($request);
+    }
+
     public function index(Request $request): void
     {
         $companyId = $request->getParam('company_id');

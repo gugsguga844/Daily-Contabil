@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <form action="<?= route('users.update', ['id' => $user->id]) ?>" method="POST" class="<?= $user->hasErrors() ? '' : 'was-validated' ?>" novalidate>
         <div class="form-container">
             <span class="form-message">Campos marcados com asterísco são obrigatórios. (*)</span>
@@ -98,4 +98,238 @@
             </div>
         </div>
     </form>
-</div>
+</div> -->
+<main class="container mx-auto px-4 py-6">
+    <!-- Breadcrumbs -->
+    <div class="text-sm text-gray-600 mb-6">
+        <a href="index.html" class="hover:text-primary">Início</a> &gt;
+        <a href="usuarios.html" class="hover:text-primary">Usuários</a> &gt;
+        <span class="text-gray-800 font-medium">Editar Usuário</span>
+    </div>
+
+    <!-- Cabeçalho da Página -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+        <div>
+            <h1 class="text-2xl font-bold text-gray-800">Editar Usuário</h1>
+            <p class="text-gray-600">Atualize as informações do usuário</p>
+        </div>
+        <div class="mt-4 md:mt-0 flex space-x-3">
+            <a href="usuarios.html" class="bg-white border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-md hover:bg-gray-50 transition flex items-center">
+                <i class="fas fa-arrow-left mr-2"></i> Voltar
+            </a>
+        </div>
+    </div>
+
+    <!-- Formulário de Edição -->
+    <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-6">
+        <div class="p-6">
+            <form id="editUserForm">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Coluna da Esquerda - Foto de Perfil -->
+                    <div class="md:col-span-1">
+                        <div class="flex flex-col items-center">
+                            <div class="mb-4 text-center">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Foto de Perfil</h3>
+                                <div class="w-40 h-40 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden mx-auto mb-4">
+                                    <img id="profileImage" src="" alt="Foto de perfil" class="w-full h-full object-cover">
+                                </div>
+                                <label for="userPhoto" class="bg-primary hover:bg-primary-hover text-primary-foreground py-2 px-4 rounded-md cursor-pointer inline-block transition">
+                                    <i class="fas fa-camera mr-2"></i> Alterar foto
+                                    <input type="file" id="userPhoto" name="userPhoto" accept="image/*" class="hidden">
+                                </label>
+                                <p class="text-xs text-gray-500 mt-2">JPG, PNG ou GIF, máx. 2MB</p>
+                            </div>
+
+                            <div class="w-full mt-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Status da Conta</h3>
+                                <div class="mb-4">
+                                    <label for="userStatus" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                    <select id="userStatus" name="user[status]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none form-select">
+                                        <option value="Ativo" selected>Ativo</option>
+                                        <option value="Inativo">Inativo</option>
+                                        <option value="Bloqueado">Bloqueado</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <label for="userRole" class="block text-sm font-medium text-gray-700 mb-1">Papel</label>
+                                    <select id="userRole" name="user[role]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none form-select">
+                                        <option value="Usuário">Usuário</option>
+                                        <option value="Administrador" selected>Administrador</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-4">
+                                    <p class="text-sm text-gray-500">
+                                        <i class="fas fa-info-circle mr-1 text-primary"></i>
+                                        Conta criada em: <span class="font-medium">10/03/2023</span>
+                                    </p>
+                                    <p class="text-sm text-gray-500">
+                                        <i class="fas fa-clock mr-1 text-primary"></i>
+                                        Último acesso: <span class="font-medium">Hoje, 10:30</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna da Direita - Informações do Usuário -->
+                    <div class="md:col-span-2">
+                        <div class="mb-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Informações Pessoais</h3>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="userName" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                                    <input type="text" id="userName" name="user[name]" value="<?= $user->name ?>" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none form-input">
+                                </div>
+
+                                <div>
+                                    <label for="userEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input type="email" id="userEmail" name="user[email]" value="<?= $user->email ?>" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none form-input">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6 mb-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Alterar Senha</h3>
+
+                            <div class="mb-4">
+                                <div class="flex items-center mb-4">
+                                    <input type="checkbox" id="changePassword" name="changePassword" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                    <label for="changePassword" class="ml-2 block text-sm text-gray-700">Alterar senha do usuário</label>
+                                </div>
+
+                                <div id="passwordFields" class="hidden">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                        <div>
+                                            <label for="newPassword" class="block text-sm font-medium text-gray-700 mb-1">Nova Senha</label>
+                                            <div class="relative">
+                                                <input type="password" id="newPassword" name="user[encrypted_password]" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none form-input">
+                                                <button type="button" class="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 toggle-password">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirmar Nova Senha</label>
+                                            <div class="relative">
+                                                <input type="password" id="confirmPassword" name="confirmPassword" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none form-input">
+                                                <button type="button" class="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 toggle-password">
+                                                    <i class="fas fa-eye"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <div class="bg-muted rounded-md p-3">
+                                            <p class="text-sm text-muted-foreground">
+                                                <i class="fas fa-info-circle mr-1"></i>
+                                                A senha deve conter:
+                                            </p>
+                                            <ul class="text-sm text-muted-foreground mt-1 ml-6 list-disc">
+                                                <li>Pelo menos 8 caracteres</li>
+                                                <li>Pelo menos uma letra maiúscula</li>
+                                                <li>Pelo menos um número</li>
+                                                <li>Pelo menos um caractere especial</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="notifyUser" name="notifyUser" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="notifyUser" class="ml-2 block text-sm text-gray-700">Notificar usuário sobre a alteração de senha</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-gray-200 pt-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Permissões</h3>
+
+                            <div class="mb-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <div class="flex items-center mb-3">
+                                            <input type="checkbox" id="permViewTutorials" name="permissions[]" value="view_tutorials" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="permViewTutorials" class="ml-2 block text-sm text-gray-700">Visualizar tutoriais</label>
+                                        </div>
+                                        <div class="flex items-center mb-3">
+                                            <input type="checkbox" id="permManageTutorials" name="permissions[]" value="manage_tutorials" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="permManageTutorials" class="ml-2 block text-sm text-gray-700">Gerenciar tutoriais</label>
+                                        </div>
+                                        <div class="flex items-center mb-3">
+                                            <input type="checkbox" id="permViewCompanies" name="permissions[]" value="view_companies" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="permViewCompanies" class="ml-2 block text-sm text-gray-700">Visualizar empresas</label>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex items-center mb-3">
+                                            <input type="checkbox" id="permManageCompanies" name="permissions[]" value="manage_companies" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="permManageCompanies" class="ml-2 block text-sm text-gray-700">Gerenciar empresas</label>
+                                        </div>
+                                        <div class="flex items-center mb-3">
+                                            <input type="checkbox" id="permViewUsers" name="permissions[]" value="view_users" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="permViewUsers" class="ml-2 block text-sm text-gray-700">Visualizar usuários</label>
+                                        </div>
+                                        <div class="flex items-center mb-3">
+                                            <input type="checkbox" id="permManageUsers" name="permissions[]" value="manage_users" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" checked>
+                                            <label for="permManageUsers" class="ml-2 block text-sm text-gray-700">Gerenciar usuários</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="border-t border-gray-200 mt-6 pt-6 flex flex-col-reverse md:flex-row justify-between">
+                    <div>
+                        <button type="button" id="deleteUserBtn" class="bg-white border border-destructive text-destructive font-medium py-2 px-4 rounded-md hover:bg-red-50 transition">
+                            <i class="fas fa-trash-alt mr-2"></i> Excluir Usuário
+                        </button>
+                    </div>
+                    <div class="flex space-x-3 mb-4 md:mb-0">
+                        <a href="usuarios.html" class="bg-white border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-md hover:bg-gray-50 transition">
+                            Cancelar
+                        </a>
+                        <button type="submit" class="bg-primary hover:bg-primary-hover text-primary-foreground font-medium py-2 px-4 rounded-md transition">
+                            <i class="fas fa-save mr-2"></i> Salvar Alterações
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="deleteModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="border-b px-6 py-4">
+                <h3 class="text-lg font-medium text-gray-900">Confirmar Exclusão</h3>
+            </div>
+            <div class="px-6 py-4">
+                <p class="text-gray-700 mb-4">Tem certeza que deseja excluir o usuário <span class="font-medium">João Silva</span>? Esta ação não pode ser desfeita.</p>
+                <div class="bg-muted rounded-md p-3">
+                    <p class="text-sm text-muted-foreground flex items-start">
+                        <i class="fas fa-exclamation-triangle text-destructive mt-0.5 mr-2"></i>
+                        <span>A exclusão deste usuário removerá permanentemente todos os seus dados e registros de atividade do sistema.</span>
+                    </p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-6 py-4 flex justify-end space-x-3 rounded-b-lg">
+                <button id="cancelDeleteBtn" class="bg-white border border-gray-300 text-gray-700 font-medium py-2 px-4 rounded-md hover:bg-gray-50 transition">
+                    Cancelar
+                </button>
+                <button id="confirmDeleteBtn" class="bg-destructive hover:bg-destructive-hover text-destructive-foreground font-medium py-2 px-4 rounded-md transition">
+                    Excluir Usuário
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
