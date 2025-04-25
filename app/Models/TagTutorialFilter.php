@@ -16,7 +16,10 @@ use Core\Database\ActiveRecord\Model;
 class TagTutorialFilter extends Model
 {
     protected static string $table = 'tag_tutorial_filter';
-    protected static array $columns = ['tag_id', 'tutorial_id'];
+    protected static array $columns = [
+        'tag_id',
+        'tutorial_id',
+    ];
 
     public function tag(): BelongsTo
     {

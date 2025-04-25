@@ -25,7 +25,20 @@ use Core\Database\ActiveRecord\Model;
 class Company extends Model
 {
     protected static string $table = 'companies';
-    protected static array $columns = ['name', 'fantasy_name', 'cnpj', 'phone', 'tax_framework', 'description', 'link', 'responsible', 'status', 'accounting_fees', 'state_registration', 'recorded_at'];
+    protected static array $columns = [
+        'name',
+        'fantasy_name',
+        'cnpj',
+        'phone',
+        'tax_framework',
+        'description',
+        'link',
+        'responsible',
+        'status',
+        'accounting_fees',
+        'state_registration',
+        'recorded_at',
+    ];
 
     public function associates(): HasMany
     {

@@ -23,7 +23,15 @@ use Core\Database\ActiveRecord\Model;
 class Associate extends Model
 {
     protected static string $table = 'associates';
-    protected static array $columns = ['name', 'qualification', 'participation', 'cpf', 'phone', 'email', 'company_id'];
+    protected static array $columns = [
+        'name',
+        'qualification',
+        'participation',
+        'cpf',
+        'phone',
+        'email',
+        'company_id',
+    ];
 
     public function company(): BelongsTo
     {
