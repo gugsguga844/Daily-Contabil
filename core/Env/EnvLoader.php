@@ -8,10 +8,17 @@ class EnvLoader
 {
     public static function init(): void
     {
-        $envs = parse_ini_file(Constants::rootPath()->join('.env'));
-
-        foreach ($envs as $key => $value) {
-            $_ENV[$key] = $value;
+        $envPath = Constants::rootPath()->join('.env');
+        if (file_exists($envPath)) {
+            $envs = parse_ini_file($envPath);
+            foreach ($envs as $key => $value) {
+                // Só define se não existir no ambiente
+                if (getenv($key) === false) {
+                    putenv("$key=$value");
+                    $_ENV[$key] = $value;
+                }
+            }
         }
+        // Em produção, as variáveis já estarão presentes no ambiente
     }
 }
