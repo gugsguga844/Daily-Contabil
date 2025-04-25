@@ -10,9 +10,16 @@ use App\Models\Tutorial;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\FlashMessage;
+use App\Middleware\Authenticate;
 
 class TutorialsController extends Controller
 {
+    public function __construct()
+    {
+        $request = new \Core\Http\Request();
+        (new Authenticate())->handle($request);
+    }
+
     public function index(Request $request): void
     {
         $subcategoryId = $request->getParam('subcategory_id');
@@ -57,7 +64,7 @@ class TutorialsController extends Controller
         $params = $request->getParams();
         $tutorial = new Tutorial($params['tutorial']);
         $subcategoryId = $params['tutorial']['subcategory_id'];
-        
+
         if ($tutorial->validates()) {
             FlashMessage::danger('Existem dados incorretos! Por favor, verificar!');
             $tags = Tag::all();
@@ -77,7 +84,7 @@ class TutorialsController extends Controller
             }
 
             FlashMessage::success('Vídeo adicionado com sucesso!');
-            
+
             $subcategory = SubCategory::findById($subcategoryId);
             $categoryId = $subcategory->category_id;
             $this->redirectTo(route('subcategories.index', ['category_id' => $categoryId]));

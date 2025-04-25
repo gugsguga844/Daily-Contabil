@@ -144,7 +144,7 @@
                     <div class="flex items-center">
                         <i class="fa-regular fa-square-plus fa-xl text-white"></i>
                         <div class="ml-4">
-                            <h3 class="text-lg font-semibold text-white">Adicionar Categoria de Vídeos</h3>
+                            <h3 class="text-lg font-semibold text-white">Adicionar Sub-Categoria de Vídeos</h3>
                             <p class="text-sm text-white">Adicione uma nova categoria de vídeo-tutoriais para essa área</p>
                         </div>
                     </div>
@@ -166,12 +166,29 @@
                             <p class="text-sm text-gray-500"><?= $subcategory->description ?></p>
                         </div>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down h-5 w-5 text-gray-500">
-                        <path d="m6 9 6 6 6-6"></path>
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up h-5 w-5 text-gray-500 hidden">
-                        <path d="m18 15-6-6-6 6"></path>
-                    </svg>
+                    <div class="flex items-center space-x-2">
+                        <?php if ($_SESSION['role'] === 'admin'): ?>
+                            <button 
+                                onclick="if(confirm('Tem certeza que deseja excluir esta subcategoria?')) { document.getElementById('delete-form-<?= $subcategory->id ?>').submit(); }"
+                                class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-md transition-colors"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="mr-2">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                </svg>
+                                Excluir Subcategoria
+                            </button>
+                            <form id="delete-form-<?= $subcategory->id ?>" action="<?= route('subcategories.destroy', ['id' => $subcategory->id]) ?>" method="POST" class="hidden">
+                                <input type="hidden" name="_method" value="DELETE">
+                            </form>
+                        <?php endif; ?>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down h-5 w-5 text-gray-500">
+                            <path d="m6 9 6 6 6-6"></path>
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up h-5 w-5 text-gray-500 hidden">
+                            <path d="m18 15-6-6-6 6"></path>
+                        </svg>
+                    </div>
                 </div>
                 <div id="obrigacoes-<?= $subcategory->id ?>" class="subcategory-content border-t border-black">
                     <div class="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

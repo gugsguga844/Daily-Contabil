@@ -21,7 +21,13 @@ use Core\Database\ActiveRecord\Model;
 class Tutorial extends Model
 {
     protected static string $table = 'tutorials';
-    protected static array $columns = ['title', 'description', 'link', 'recorded_at', 'subcategory_id'];
+    protected static array $columns = [
+        'title',
+        'description',
+        'link',
+        'recorded_at',
+        'subcategory_id',
+    ];
 
     public function subcategory(): BelongsTo
     {
@@ -46,5 +52,4 @@ class Tutorial extends Model
     {
         return $this->belongsToMany(Tag::class, TagTutorialFilter::class, 'tutorial_id', 'tag_id');
     }
-
 }

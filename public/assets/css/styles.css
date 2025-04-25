@@ -115,6 +115,52 @@
   background-color: hsl(160, 84%, 39%);
 }
 
+.timeline-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+}
+.timeline-month {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.timeline-month.completed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+.timeline-month.pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+.timeline-month.future {
+  background-color: #e5e7eb;
+  color: #6b7280;
+}
+.timeline-month.current {
+  border: 2px solid #059669;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
 /* Estilos para melhorar a acessibilidade */
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -123,6 +169,12 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+.required-field::after {
+  content: "*";
+  color: #e53e3e;
+  margin-left: 2px;
 }
 
 /* Estilos para impressão */

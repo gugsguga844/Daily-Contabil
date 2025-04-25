@@ -6,9 +6,18 @@ use App\Models\User;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\FlashMessage;
+use App\Middleware\Authenticate;
+use App\Middleware\AuthorizeAdmin;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $request = new \Core\Http\Request();
+        (new Authenticate())->handle($request);
+        (new AuthorizeAdmin())->handle($request);
+    }
+
     public function index(Request $request): void
     {
         $paginator = User::paginate(page: $request->getParam('page', 1));

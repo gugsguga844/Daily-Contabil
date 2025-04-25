@@ -25,3 +25,23 @@
 .header-item {
   margin: 0px 20px
 }
+
+/* Estilos para garantir que o footer fique sempre no final */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  width: 100%;
+}

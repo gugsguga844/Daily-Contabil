@@ -7,9 +7,16 @@ use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\Authentication\Auth;
 use Lib\FlashMessage;
+use App\Middleware\Authenticate;
 
 class ProfileController extends Controller
 {
+    public function __construct()
+    {
+        $request = new \Core\Http\Request();
+        (new Authenticate())->handle($request);
+    }
+
     public function show(): void
     {
         $this->render('profile/show');

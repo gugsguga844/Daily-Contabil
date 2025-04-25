@@ -10,6 +10,37 @@ CREATE TABLE users (
     role ENUM('admin', 'user') DEFAULT 'user' NOT NULL
 );
 
+DROP TABLE IF EXISTS companies;
+CREATE TABLE companies (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    fantasy_name VARCHAR(255),
+    cnpj VARCHAR(255) NOT NULL,
+    phone VARCHAR(255),
+    tax_framework VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
+    link VARCHAR(255),
+    responsible VARCHAR(255),
+    status VARCHAR(255) NOT NULL,
+    accounting_fees VARCHAR(255),
+    state_registration VARCHAR(255),
+    recorded_at VARCHAR(255)
+);
+
+DROP TABLE IF EXISTS associates;
+CREATE TABLE associates (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    qualification VARCHAR(255) NOT NULL,
+    participation VARCHAR(255) NOT NULL,
+    cpf VARCHAR(255) NOT NULL,
+    phone VARCHAR(255),
+    email VARCHAR(255),
+    company_id INT NOT NULL,
+    CONSTRAINT fk_company FOREIGN KEY (company_id)
+    REFERENCES companies(id) ON DELETE CASCADE
+);
+
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
