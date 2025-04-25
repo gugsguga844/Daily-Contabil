@@ -46,5 +46,4 @@ class Tutorial extends Model
     {
         return $this->belongsToMany(Tag::class, TagTutorialFilter::class, 'tutorial_id', 'tag_id');
     }
-
 }

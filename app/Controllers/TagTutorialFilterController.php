@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Middleware\Authenticate;
 use App\Middleware\VerifyCsrfToken;
-
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Tag;
@@ -34,7 +33,7 @@ class TagTutorialFilterController extends Controller
 
         $tagTutorial->destroy();
         FlashMessage::success('Tag removida com sucesso!');
-        
+
         $this->redirectBack();
     }
 }

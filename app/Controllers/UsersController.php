@@ -6,7 +6,6 @@ use App\Models\User;
 use Core\Http\Controllers\Controller;
 use Core\Http\Request;
 use Lib\FlashMessage;
-
 use App\Middleware\Authenticate;
 use App\Middleware\AuthorizeAdmin;
 
