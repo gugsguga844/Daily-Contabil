@@ -18,7 +18,7 @@ CREATE TABLE companies (
     cnpj VARCHAR(255) NOT NULL,
     phone VARCHAR(255),
     tax_framework VARCHAR(255) NOT NULL,
-    description VARCHAR(255),
+    description TEXT,
     link VARCHAR(255),
     responsible VARCHAR(255),
     status VARCHAR(255) NOT NULL,
@@ -51,7 +51,7 @@ DROP TABLE IF EXISTS subcategories;
 CREATE TABLE subcategories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
     category_id INT NOT NULL,
     CONSTRAINT fk_category FOREIGN KEY (category_id)
     REFERENCES categories(id) ON DELETE CASCADE
@@ -61,7 +61,7 @@ DROP TABLE IF EXISTS tutorials;
 CREATE TABLE tutorials (
     id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(100) NOT NULL,
-    description VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL,
     link VARCHAR(255) NOT NULL,
     recorded_at VARCHAR(65) NOT NULL,
     subcategory_id INT NOT NULL,
